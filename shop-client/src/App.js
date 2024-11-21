@@ -1,46 +1,47 @@
-
+import React, { useState, useEffect } from 'react';
+import Navbar from './components/Navbar';
 import './App.css';
-
-
-import api from './api/axiosConfig'
-
-import { useState, useEffect } from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import Layout from './components/Layout';
 import { Routes, Route } from 'react-router-dom';
-import Home from './components/home/Home';
-
+import Home from './components/Home';
+import ProductDetail from './components/ProductDetail';
+import Cart from './components/Cart';
+import Login from './components/Login';
+import Register from './components/Register';
+import api from './api/axiosConfig';
+import Admin from './components/Admin';
 
 function App() {
-  const [products, setProducts] = useState();
+  const [products, setProducts] = useState([]);
+  const [cart, setCart] = useState([]);
+
   const getProducts = async () => {
     try {
       const response = await api.get("/api/v1/products");
-      console.log(response.data);
-
       setProducts(response.data);
-
     } catch (err) {
-      console.log(err);
-
-
+      console.log("Error fetching products: ", err);
     }
+  };
 
-
-
-  }
   useEffect(() => {
     getProducts();
-  }, [])
+  }, []);
+
+  const addToCart = (product) => {
+    setCart((prevCart) => [...prevCart, product]);
+  };
 
   return (
     <div className="App">
-
+      <Navbar />
       <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route path="/" element={<Home />} ></Route>
+        <Route path="/" element={<Home products={products} addToCart={addToCart} />} />
+        <Route path="/product/:id" element={<ProductDetail products={products} addToCart={addToCart} />} />
+        <Route path="/cart" element={<Cart cart={cart} />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/admin" element={<Admin products={products} setProducts={setProducts} />} />
 
-        </Route>
       </Routes>
     </div>
   );
