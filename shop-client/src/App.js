@@ -9,6 +9,8 @@ import Login from './components/Login';
 import Register from './components/Register';
 import api from './api/axiosConfig';
 import Admin from './components/Admin';
+import { BrowserRouter } from "react-router-dom";
+
 
 function App() {
   const [products, setProducts] = useState([]);
