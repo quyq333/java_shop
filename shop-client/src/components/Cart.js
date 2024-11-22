@@ -70,11 +70,11 @@ function Cart({ cart, setCart }) {
                                     <button className="btn btn-sm btn-danger" onClick={() => handleRemoveProduct(product.id)}>Remove</button>
                                     <div className="mx-2">
                                         <button className="btn btn-sm btn-info" onClick={() => handleDecreaseQuantity(product.id)}>-</button>
-                                        <span className="mx-2">{product.quantity}</span>
+                                        <span className="mx-2">{(product.quantity / 100)} </span>
                                         <button className="btn btn-sm btn-info" onClick={() => handleIncreaseQuantity(product.id)}>+</button>
                                     </div>
                                     {/* Hiển thị giá trị tính tổng */}
-                                    <span>{(parseFloat(product.price) * parseInt(product.quantity, 10))} VND</span>
+                                    <span>{(parseFloat(product.price) * parseInt(product.quantity, 10)) / 100} VND</span>
                                 </div>
                             </li>
                         ))}

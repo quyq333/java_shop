@@ -38,6 +38,8 @@ public class Product {
 
     private List<String> image;
 
+    private Integer quantity;
+
 }
 
 
