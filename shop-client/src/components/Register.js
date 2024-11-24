@@ -1,13 +1,28 @@
-// Register.js
 import React, { useState } from 'react';
 
 function Register() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [message, setMessage] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Logic đăng ký
+
+        // Lấy danh sách người dùng hiện tại từ localStorage
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+
+        // Kiểm tra xem email đã tồn tại chưa
+        if (users.some(user => user.email === email)) {
+            setMessage('Email đã được đăng ký!');
+            return;
+        }
+
+        // Thêm người dùng mới vào danh sách và lưu vào localStorage
+        const newUser = { email, password };
+        users.push(newUser);
+        localStorage.setItem('users', JSON.stringify(users));
+
+        setMessage('Đăng ký thành công!');
     };
 
     return (
@@ -36,6 +51,9 @@ function Register() {
                 </div>
                 <button type="submit" className="btn btn-primary">Register</button>
             </form>
+
+            {/* Hiển thị thông báo */}
+            {message && <p className="alert alert-info mt-3">{message}</p>}
         </div>
     );
 }

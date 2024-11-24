@@ -40,12 +40,16 @@ function App() {
     <div className="App">
       <Navbar />
       <Routes>
+        <Route path="/register" element={<Register />} />
+
+        <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
         <Route path="/" element={<Home products={products} addToCart={addToCart} />} />
         <Route path="/product/:id" element={<ProductDetail products={products} addToCart={addToCart} />} />
         <Route path="/cart" element={<Cart cart={cart} setCart={setCart} />} />
 
-        <Route path="/login" element={<Login setIsAuthenticated={{ setIsAuthenticated }} />} />
-        <Route path="/register" element={<Register />} />
+
+
+
         <Route path="/admin" element={<Admin products={products} setProducts={setProducts} />} />
 
       </Routes>

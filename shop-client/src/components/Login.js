@@ -1,24 +1,28 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Sử dụng react-router-dom để chuyển trang
+import { useNavigate } from 'react-router-dom';
 
 function Login({ setIsAuthenticated }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [message, setMessage] = useState(''); // Thông báo
-    const navigate = useNavigate(); // Hook để chuyển trang
+    const [message, setMessage] = useState('');
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        // Logic kiểm tra đăng nhập
-        if (email === 'test@example.com' && password === 'password') {
-            setIsAuthenticated(true); // Đăng nhập thành công
+        // Lấy danh sách người dùng từ localStorage
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+
+        // Kiểm tra thông tin đăng nhập
+        const user = users.find(user => user.email === email && user.password === password);
+        if (user) {
+            setIsAuthenticated(true);
             setMessage('Đăng nhập thành công!');
             setTimeout(() => {
-                navigate('/'); // Chuyển đến trang chính (Home)
-            }, 1500); // Thời gian chờ trước khi chuyển
+                navigate('/');
+            }, 1500);
         } else {
-            setMessage('Email hoặc mật khẩu không đúng.'); // Thông báo lỗi
+            setMessage('Email hoặc mật khẩu không đúng.');
         }
     };
 
