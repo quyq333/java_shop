@@ -1,150 +1,8 @@
 ﻿[
   {
-    "id": 1,
-    "productId": "FPB001",
-    "title": "Retro Souvenir Ball - The Team - Brilliant White",
-    "type": "1",
-    "description": "Lấy cảm hứng từ quả bóng đá 15 mảnh được sử dụng rộng rãi vào những năm 1950s, thiết kế lưu giữ kỉ niệm thương hiệu Ananas Football. Làm từ da nhân tạo, không đạt tiêu chuẩn thi đấu, chỉ phù hợp để trưng bày. Phiên bản đặc biệt, số lượng giới hạn, không tái sản xuất.",
-    "releaseDate": "17/11/2024",
-    "poster": "https://ananas.vn/wp-content/uploads/Pro_FPB001_1-2.jpg",
-    "status": "Available",
-    "color": "Blue White",
-    "price": 250000,
-    "image": []
-
-  },
-  {
-    "id": 2,
-    "productId": "AV00210",
-    "title": "Basas Day Slide - Slip On - Offwhite",
-    "type": "1",
-    "description": "Gender: Unisex, Size run: 35–46, Upper: Canvas, Outsole: Rubber",
-    "releaseDate": "17/11/2024",
-    "poster": "https://ananas.vn/wp-content/uploads/Pro_AV00210_1.jpg",
-    "status": "New Arrival",
-    "color": "White",
-    "price": 750000,
-    "image": []
-  },
-  {
-    "id": 3,
-    "productId": "AV00211",
-    "title": "Basas Day Slide - Slip On - Offblack",
-    "type": "1",
-    "description": "Gender: Unisex, Size run: 35–46, Upper: Canvas, Outsole: Rubber",
-    "releaseDate": "17/11/2024",
-    "poster": "https://ananas.vn/wp-content/uploads/Pro_AV00211_1.jpg",
-    "status": "New Arrival",
-    "color": "Black",
-    "price": 750000,
-    "image": []
-  },
-  {
-    "id": 4,
-    "productId": "ALP2401",
-    "title": "Urbas Love+ 24 - Oyster White",
-    "type": "1",
-    "description": "The shoe is so beautiful.",
-    "releaseDate": "17/11/2024",
-    "poster": "https://ananas.vn/wp-content/uploads/Pro_ALP2401_1.jpg",
-    "status": "New Arrival",
-    "color": "Oyster White",
-    "price": 650000,
-    "image": []
-  },
-  {
-    "id": 5,
-    "productId": "AV00209",
-    "title": "Vintas Public 2000s - Low Top - Caviar Black",
-    "type": "1",
-    "description": "The shoe is so beautiful.",
-    "releaseDate": "17/11/2024",
-    "poster": "https://ananas.vn/wp-content/uploads/Pro_AV00209_1.jpg",
-    "status": "New Arrival",
-    "color": "Black",
-    "price": 550000,
-    "image": []
-  },
-  {
-    "id": 6,
-    "productId": "AV00207",
-    "title": "Vintas Public 2000s - Low Top - Insignia Blue",
-    "type": "1",
-    "description": "Gender: Unisex, Size run: 35–46, Upper: Canvas, Outsole: Rubber",
-    "releaseDate": "17/11/2024",
-    "poster": "https://ananas.vn/wp-content/uploads/Pro_AV00207_1.jpg",
-    "status": "Sale Off",
-    "color": "Insignia Blue",
-    "price": 434000,
-    "image": []
-  },
-  {
-    "id": 7,
-    "productId": "AV00208",
-    "title": "Vintas Public 2000s - Low Top - Brindle",
-    "type": "1",
-    "description": "The shoe is so beautiful.",
-    "releaseDate": "17/11/2024",
-    "poster": "https://ananas.vn/wp-content/uploads/Pro_AV00208_1.jpg",
-    "status": "Sale Off",
-    "color": "Brindle",
-    "price": 496000,
-    "image": []
-  },
-  {
-    "id": 8,
-    "productId": "ABT00035",
-    "title": "Basic Pocket Tee - Ananas Mini Label - Antique White",
-    "type": "2",
-    "description": "Áo thun ngắn tay, form cơ bản, chất liệu 100% cotton. Thiết kế đơn giản, phối đồ linh hoạt.",
-    "releaseDate": "17/11/2024",
-    "poster": "https://ananas.vn/wp-content/uploads/Pro_ABT00035_1.jpg",
-    "status": "Sale Off",
-    "color": "White",
-    "price": 454000,
-    "image": []
-  },
-  {
-    "id": 9,
-    "productId": "ABT00028",
-    "title": "Basic Tee - Branding Label - Grape Compote",
-    "type": "2",
-    "description": "Áo thun ngắn tay, chất liệu 100% cotton, thiết kế tối giản với điểm nhấn tinh tế.",
-    "releaseDate": "17/11/2024",
-    "poster": "https://ananas.vn/wp-content/uploads/Pro_ABT00028_1.jpg",
-    "status": "New Arrival",
-    "color": "Black",
-    "price": 250000,
-    "image": []
-  },
-  {
-    "id": 10,
-    "productId": "ABT00031",
-    "title": "Basic Pocket Tee - Ananas Mini Label - Cloud Dancer",
-    "type": "2",
-    "description": "Áo thun ngắn tay, chất liệu cotton thô mộc, điểm nhấn nhẹ nhàng từ tem Ananas.",
-    "releaseDate": "17/11/2024",
-    "poster": "https://ananas.vn/wp-content/uploads/Pro_ABT00031_1.jpg",
-    "status": "New Arrival",
-    "color": "White",
-    "price": 150000,
-    "image": []
-  },
-  {
-    "id": 11,
-    "productId": "AGT0003",
-    "title": "Hiphop Graphic Tee - Discover Ananas - Ermine",
-    "type": "2",
-    "description": "Áo thun ngắn tay, thiết kế tối giản với tem Ananas. Chất liệu 100% cotton, phù hợp cho mọi trang phục.",
-    "releaseDate": "17/11/2024",
-    "poster": "https://ananas.vn/wp-content/uploads/pro_agt0003_1.jpg",
-    "status": "New Arrival",
-    "color": "Ermine",
-    "price": 299000,
-    "image": []
-  },
-  {
-    "id": 12,
+    "_id": {
+      "$oid": "6739b071af6c6fd295b0141c"
+    },
     "productId": "AGT0014",
     "title": "Graphic Tee - Most Wanted Dalton - Caviar Black",
     "type": "2",
@@ -154,88 +12,109 @@
     "status": "New Arrival",
     "color": "Caviar Black",
     "price": 150000,
-    "image": []
+    "image": [],
+    "quantity": 100
   },
   {
-    "id": 13,
-    "productId": "AGLT0027",
-    "title": "Long Sleeve Graphic Tee - Love, Peace & Music - White",
-    "type": "2",
-    "description": "Áo thun dài tay với thiết kế tối giản, phối đồ linh hoạt.",
+    "_id": {
+      "$oid": "6739b071af6c6fd295b01414"
+    },
+    "productId": "ALP2401",
+    "title": "Urbas Love+ 24 - Oyster White",
+    "type": "1",
+    "description": "The shoe is so beautiful.",
     "releaseDate": "17/11/2024",
-    "poster": "https://ananas.vn/wp-content/uploads/Thumbnail-7-1.jpg",
+    "poster": "https://ananas.vn/wp-content/uploads/Pro_ALP2401_1.jpg",
     "status": "New Arrival",
-    "color": "White",
+    "color": "Oyster White",
+    "price": 650000,
+    "image": [],
+    "quantity": 100
+  },
+  {
+    "_id": {
+      "$oid": "6739b071af6c6fd295b01415"
+    },
+    "productId": "AV00209",
+    "title": "Vintas Public 2000s - Low Top - Caviar Black",
+    "type": "1",
+    "description": "The shoe is so beautiful.",
+    "releaseDate": "17/11/2024",
+    "poster": "https://ananas.vn/wp-content/uploads/Pro_AV00209_1.jpg",
+    "status": "New Arrival",
+    "color": "Black",
     "price": 550000,
-    "image": []
+    "image": [],
+    "quantity": 100
   },
   {
-    "id": 14,
-    "productId": "AGT0010",
-    "title": "Hiphop Graphic Tee - Ananas Symbol - Black",
-    "type": "2",
-    "description": "Áo Graphic Tee phong cách Hiphop với họa tiết Ananas ở mặt trước và sau, giúp khẳng định cá tính.",
+    "_id": {
+      "$oid": "6739b071af6c6fd295b01416"
+    },
+    "productId": "AV00207",
+    "title": "Vintas Public 2000s - Low Top - Insignia Blue",
+    "type": "1",
+    "description": "Gender: Unisex, Size run: 35–46, Upper: Canvas, Outsole: Rubber",
     "releaseDate": "17/11/2024",
-    "poster": "https://ananas.vn/wp-content/uploads/AGT0010_1.jpg",
-    "status": "New Arrival",
-    "color": "Black",
-    "price": 350000,
-    "image": []
+    "poster": "https://ananas.vn/wp-content/uploads/Pro_AV00207_1.jpg",
+    "status": "Sale Off",
+    "color": "Insignia Blue",
+    "price": 434000,
+    "image": [],
+    "quantity": 100
   },
   {
-    "id": 15,
-    "productId": "AGT0020",
-    "title": "Graphic Pocket Tee - Doraemon 50 Years - Cloud Dancer",
-    "type": "2",
+    "_id": {
+      "$oid": "6739b071af6c6fd295b01417"
+    },
+    "productId": "AV00208",
+    "title": "Vintas Public 2000s - Low Top - Brindle",
+    "type": "1",
+    "description": "The shoe is so beautiful.",
     "releaseDate": "17/11/2024",
-    "description": "Áo Graphic Tee với họa tiết Doraemon, kỉ niệm 50 năm bộ truyện. Thiết kế phom rộng thoải mái.",
-    "poster": "https://ananas.vn/wp-content/uploads/pro_AGT0020_1.jpg",
+    "poster": "https://ananas.vn/wp-content/uploads/Pro_AV00208_1.jpg",
+    "status": "Sale Off",
+    "color": "Brindle",
+    "price": 496000,
+    "image": [],
+    "quantity": 100
+  },
+  {
+    "_id": {
+      "$oid": "6739b071af6c6fd295b01418"
+    },
+    "productId": "ABT00035",
+    "title": "Basic Pocket Tee - Ananas Mini Label - Antique White",
+    "type": "2",
+    "description": "Áo thun ngắn tay, form cơ bản, chất liệu 100% cotton. Thiết kế đơn giản, phối đồ linh hoạt.",
+    "releaseDate": "17/11/2024",
+    "poster": "https://ananas.vn/wp-content/uploads/Pro_ABT00035_1.jpg",
+    "status": "Sale Off",
+    "color": "White",
+    "price": 454000,
+    "image": [],
+    "quantity": 100
+  },
+  {
+    "_id": {
+      "$oid": "6739b071af6c6fd295b0141a"
+    },
+    "productId": "ABT00031",
+    "title": "Basic Pocket Tee - Ananas Mini Label - Cloud Dancer",
+    "type": "2",
+    "description": "Áo thun ngắn tay, chất liệu cotton thô mộc, điểm nhấn nhẹ nhàng từ tem Ananas.",
+    "releaseDate": "17/11/2024",
+    "poster": "https://ananas.vn/wp-content/uploads/Pro_ABT00031_1.jpg",
     "status": "New Arrival",
     "color": "White",
-    "price": 390000,
-    "image": []
-  },
-  {
-    "id": 16,
-    "productId": "AGT0021",
-    "title": "Graphic Tee - Skate 4P - Snow White",
-    "type": "2",
-    "description": "Áo thun đơn giản với phom dáng rộng, phù hợp cho phong cách thể thao.",
-    "releaseDate": "17/11/2024",
-    "poster": "https://ananas.vn/wp-content/uploads/Thumbnail.jpg",
-    "status": "New Arrival",
-    "color": "White",
-    "price": 350000,
-    "image": []
-  },
-  {
-    "id": 17,
-    "productId": "AGT0009",
-    "title": "Hiphop Graphic Tee - Ananas Symbol - Ketchup",
-    "type": "2",
-    "description": "Áo Graphic Tee phong cách Hiphop, phối họa tiết nổi bật, thể hiện cá tính riêng.",
-    "releaseDate": "17/11/2024",
-    "poster": "https://ananas.vn/wp-content/uploads/AGT0009_2.jpg",
-    "status": "New Arrival",
-    "color": "Red",
     "price": 150000,
-    "image": []
+    "image": [],
+    "quantity": 100
   },
   {
-    "id": 18,
-    "productId": "AHO0010",
-    "title": "Doraemon 50 Years Hoodie - Black",
-    "type": "3",
-    "description": "Hoodie với họa tiết Doraemon và logo 3D độc đáo. Phù hợp với thời tiết lạnh.",
-    "releaseDate": "17/11/2024",
-    "poster": "https://ananas.vn/wp-content/uploads/AHO0010_2.jpg",
-    "status": "New Arrival",
-    "color": "Black",
-    "price": 790000,
-    "image": []
-  },
-  {
-    "id": 19,
+    "_id": {
+      "$oid": "6739b071af6c6fd295b01423"
+    },
     "productId": "AHO0011",
     "title": "Doraemon 50 Years Hoodie - White",
     "type": "3",
@@ -245,10 +124,13 @@
     "status": "New Arrival",
     "color": "White",
     "price": 790000,
-    "image": []
+    "image": [],
+    "quantity": 100
   },
   {
-    "id": 20,
+    "_id": {
+      "$oid": "6739b071af6c6fd295b01424"
+    },
     "productId": "ABT00020",
     "title": "Basic Tee - Ananas Logo - Black",
     "type": "2",
@@ -258,8 +140,183 @@
     "status": "Available",
     "color": "Black",
     "price": 250000,
-    "image": []
+    "image": [],
+    "quantity": 100
+  },
+  {
+    "_id": {
+      "$oid": "6739b071af6c6fd295b01411"
+    },
+    "productId": "FPB001",
+    "title": "Retro Souvenir Ball - The Team - Brilliant White",
+    "type": "1",
+    "description": "Lấy cảm hứng từ quả bóng đá 15 mảnh được sử dụng rộng rãi vào những năm 1950s, thiết kế lưu giữ kỉ niệm thương hiệu Ananas Football. Làm từ da nhân tạo, không đạt tiêu chuẩn thi đấu, chỉ phù hợp để trưng bày. Phiên bản đặc biệt, số lượng giới hạn, không tái sản xuất.",
+    "releaseDate": "17/11/2024",
+    "poster": "https://ananas.vn/wp-content/uploads/Pro_FPB001_1-2.jpg",
+    "status": "Available",
+    "color": "Blue White",
+    "price": 250000,
+    "image": [],
+    "quantity": 100
+  },
+  {
+    "_id": {
+      "$oid": "6739b071af6c6fd295b01412"
+    },
+    "productId": "AV00210",
+    "title": "Basas Day Slide - Slip On - Offwhite",
+    "type": "1",
+    "description": "Gender: Unisex, Size run: 35–46, Upper: Canvas, Outsole: Rubber",
+    "releaseDate": "17/11/2024",
+    "poster": "https://ananas.vn/wp-content/uploads/Pro_AV00210_1.jpg",
+    "status": "New Arrival",
+    "color": "White",
+    "price": 750000,
+    "image": [],
+    "quantity": 100
+  },
+  {
+    "_id": {
+      "$oid": "6739b071af6c6fd295b01413"
+    },
+    "productId": "AV00211",
+    "title": "Basas Day Slide - Slip On - Offblack",
+    "type": "1",
+    "description": "Gender: Unisex, Size run: 35–46, Upper: Canvas, Outsole: Rubber",
+    "releaseDate": "17/11/2024",
+    "poster": "https://ananas.vn/wp-content/uploads/Pro_AV00211_1.jpg",
+    "status": "New Arrival",
+    "color": "Black",
+    "price": 750000,
+    "image": [],
+    "quantity": 100
+  },
+  {
+    "_id": {
+      "$oid": "6739b071af6c6fd295b0141b"
+    },
+    "productId": "AGT0003",
+    "title": "Hiphop Graphic Tee - Discover Ananas - Ermine",
+    "type": "2",
+    "description": "Áo thun ngắn tay, thiết kế tối giản với tem Ananas. Chất liệu 100% cotton, phù hợp cho mọi trang phục.",
+    "releaseDate": "17/11/2024",
+    "poster": "https://ananas.vn/wp-content/uploads/pro_agt0003_1.jpg",
+    "status": "New Arrival",
+    "color": "Ermine",
+    "price": 299000,
+    "image": [],
+    "quantity": 100
+  },
+  {
+    "_id": {
+      "$oid": "6739b071af6c6fd295b0141f"
+    },
+    "productId": "AGT0020",
+    "title": "Graphic Pocket Tee - Doraemon 50 Years - Cloud Dancer",
+    "type": "2",
+    "releaseDate": "17/11/2024",
+    "description": "Áo Graphic Tee với họa tiết Doraemon, kỉ niệm 50 năm bộ truyện. Thiết kế phom rộng thoải mái.",
+    "poster": "https://ananas.vn/wp-content/uploads/pro_AGT0020_1.jpg",
+    "status": "New Arrival",
+    "color": "White",
+    "price": 390000,
+    "image": [],
+    "quantity": 100
+  },
+  {
+    "_id": {
+      "$oid": "6739b071af6c6fd295b01421"
+    },
+    "productId": "AGT0009",
+    "title": "Hiphop Graphic Tee - Ananas Symbol - Ketchup",
+    "type": "2",
+    "description": "Áo Graphic Tee phong cách Hiphop, phối họa tiết nổi bật, thể hiện cá tính riêng.",
+    "releaseDate": "17/11/2024",
+    "poster": "https://ananas.vn/wp-content/uploads/AGT0009_2.jpg",
+    "status": "New Arrival",
+    "color": "Red",
+    "price": 150000,
+    "image": [],
+    "quantity": 100
+  },
+  {
+    "_id": {
+      "$oid": "6739b071af6c6fd295b01419"
+    },
+    "productId": "ABT00028",
+    "title": "Basic Tee - Branding Label - Grape Compote",
+    "type": "2",
+    "description": "Áo thun ngắn tay, chất liệu 100% cotton, thiết kế tối giản với điểm nhấn tinh tế.",
+    "releaseDate": "17/11/2024",
+    "poster": "https://ananas.vn/wp-content/uploads/Pro_ABT00028_1.jpg",
+    "status": "New Arrival",
+    "color": "Black",
+    "price": 250000,
+    "image": [],
+    "quantity": 100
+  },
+  {
+    "_id": {
+      "$oid": "6739b071af6c6fd295b0141d"
+    },
+    "productId": "AGLT0027",
+    "title": "Long Sleeve Graphic Tee - Love, Peace & Music - White",
+    "type": "2",
+    "description": "Áo thun dài tay với thiết kế tối giản, phối đồ linh hoạt.",
+    "releaseDate": "17/11/2024",
+    "poster": "https://ananas.vn/wp-content/uploads/Thumbnail-7-1.jpg",
+    "status": "New Arrival",
+    "color": "White",
+    "price": 550000,
+    "image": [],
+    "quantity": 100
+  },
+  {
+    "_id": {
+      "$oid": "6739b071af6c6fd295b0141e"
+    },
+    "productId": "AGT0010",
+    "title": "Hiphop Graphic Tee - Ananas Symbol - Black",
+    "type": "2",
+    "description": "Áo Graphic Tee phong cách Hiphop với họa tiết Ananas ở mặt trước và sau, giúp khẳng định cá tính.",
+    "releaseDate": "17/11/2024",
+    "poster": "https://ananas.vn/wp-content/uploads/AGT0010_1.jpg",
+    "status": "New Arrival",
+    "color": "Black",
+    "price": 350000,
+    "image": [],
+    "quantity": 100
+  },
+  {
+    "_id": {
+      "$oid": "6739b071af6c6fd295b01420"
+    },
+    "productId": "AGT0021",
+    "title": "Graphic Tee - Skate 4P - Snow White",
+    "type": "2",
+    "description": "Áo thun đơn giản với phom dáng rộng, phù hợp cho phong cách thể thao.",
+    "releaseDate": "17/11/2024",
+    "poster": "https://ananas.vn/wp-content/uploads/Thumbnail.jpg",
+    "status": "New Arrival",
+    "color": "White",
+    "price": 350000,
+    "image": [],
+    "quantity": 100
+  },
+  {
+    "_id": {
+      "$oid": "6739b071af6c6fd295b01422"
+    },
+    "productId": "AHO0010",
+    "title": "Doraemon 50 Years Hoodie - Black",
+    "type": "3",
+    "description": "Hoodie với họa tiết Doraemon và logo 3D độc đáo. Phù hợp với thời tiết lạnh.",
+    "releaseDate": "17/11/2024",
+    "poster": "https://ananas.vn/wp-content/uploads/AHO0010_2.jpg",
+    "status": "New Arrival",
+    "color": "Black",
+    "price": 790000,
+    "image": [],
+    "quantity": 100
   }
 ]
-
-

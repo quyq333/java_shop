@@ -3,15 +3,16 @@ import React, { useState } from 'react';
 function Admin({ products, setProducts }) {
     const [isEditing, setIsEditing] = useState(null); // Lưu id của sản phẩm đang được chỉnh sửa
     const [currentProduct, setCurrentProduct] = useState(null);
-    const [newProduct, setNewProduct] = useState({ title: '', description: '', price: '', poster: '' });
+    const [newProduct, setNewProduct] = useState({ title: '', description: '', price: '', poster: '', quantity: 1 });
 
     // Thêm sản phẩm mới
     const handleAddProduct = () => {
         if (newProduct.title && newProduct.description && newProduct.price && newProduct.poster) {
-            setProducts([{ ...newProduct, id: Date.now(), quantity: 1 }, ...products]);
-            setNewProduct({ title: '', description: '', price: '', poster: '' });
+            setProducts([{ ...newProduct, id: Date.now() }, ...products]);
+            setNewProduct({ title: '', description: '', price: '', poster: '', quantity: 1 });
         }
     };
+
     // Cập nhật sản phẩm
     const handleUpdateProduct = (product) => {
         setProducts(products.map((p) =>
@@ -70,6 +71,14 @@ function Admin({ products, setProducts }) {
                         onChange={(e) => setNewProduct({ ...newProduct, poster: e.target.value })}
                     />
                 </div>
+                <div>
+                    <input
+                        type="number"
+                        placeholder="Product Quantity"
+                        value={newProduct.quantity}
+                        onChange={(e) => setNewProduct({ ...newProduct, quantity: e.target.value })}
+                    />
+                </div>
                 <button onClick={handleAddProduct}>Add Product</button>
             </div>
 
@@ -117,6 +126,20 @@ function Admin({ products, setProducts }) {
                                             ) : (
                                                 product.price
                                             )} VND
+                                        </strong>
+                                    </p>
+                                    <p className="card-text">
+                                        <strong>
+                                            Quantity:
+                                            {isEditing === product.id ? (
+                                                <input
+                                                    type="number"
+                                                    value={currentProduct?.quantity || product.quantity}
+                                                    onChange={(e) => handleInputChange(e, 'quantity')}
+                                                />
+                                            ) : (
+                                                product.quantity
+                                            )}
                                         </strong>
                                     </p>
 
