@@ -18,7 +18,7 @@ public class ProductService {
         return productRepository.findAll();
 
     }
-    public Optional<Product> singleProduct(Integer _id){
-        return productRepository.findProductById(_id);
+    public Optional<Product> singleProduct(Integer id){
+        return productRepository.findProductById(id);
     }
 }
