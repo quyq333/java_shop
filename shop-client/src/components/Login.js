@@ -1,14 +1,25 @@
-// Login.js
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Sử dụng react-router-dom để chuyển trang
 
 function Login({ setIsAuthenticated }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [message, setMessage] = useState(''); // Thông báo
+    const navigate = useNavigate(); // Hook để chuyển trang
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Logic xác thực
-        setIsAuthenticated(true);
+
+        // Logic kiểm tra đăng nhập
+        if (email === 'test@example.com' && password === 'password') {
+            setIsAuthenticated(true); // Đăng nhập thành công
+            setMessage('Đăng nhập thành công!');
+            setTimeout(() => {
+                navigate('/'); // Chuyển đến trang chính (Home)
+            }, 1500); // Thời gian chờ trước khi chuyển
+        } else {
+            setMessage('Email hoặc mật khẩu không đúng.'); // Thông báo lỗi
+        }
     };
 
     return (
@@ -37,6 +48,9 @@ function Login({ setIsAuthenticated }) {
                 </div>
                 <button type="submit" className="btn btn-primary">Login</button>
             </form>
+
+            {/* Hiển thị thông báo */}
+            {message && <p className="alert alert-info mt-3">{message}</p>}
         </div>
     );
 }
