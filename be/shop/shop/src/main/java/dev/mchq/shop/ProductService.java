@@ -19,6 +19,6 @@ public class ProductService {
 
     }
     public Optional<Product> singleProduct(Integer id){
-        return productRepository.findProductByProductId(id);
+        return productRepository.findProductById(id);
     }
 }
