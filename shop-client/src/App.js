@@ -10,7 +10,7 @@ import Register from './components/Register';
 import api from './api/axiosConfig';
 import Admin from './components/Admin';
 import { BrowserRouter } from "react-router-dom";
-
+import Checkout from './components/Checkout';
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -37,6 +37,9 @@ function App() {
     ]);
   };
 
+  const calculateTotal = () => {
+    return cart.reduce((total, item) => total + item.price * item.quantity, 0);
+  };
 
   return (
     <div className="App">
@@ -46,10 +49,12 @@ function App() {
         <Route path="/product/:id" element={<ProductDetail products={products} addToCart={addToCart} />} />
         <Route path="/cart" element={<Cart cart={cart} setCart={setCart} />} />
 
-        <Route path="/" element={<Login setIsAuthenticated={{ setIsAuthenticated }} />} />
+        <Route path="/" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
         <Route path="/register" element={<Register />} />
         <Route path="/admin" element={<Admin products={products} setProducts={setProducts} />} />
 
+        {/* Truyền giỏ hàng và tổng tiền sang trang thanh toán */}
+        <Route path="/checkout" element={<Checkout cart={cart} total={calculateTotal()} />} />
       </Routes>
     </div>
   );

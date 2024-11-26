@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 function Home({ products, addToCart }) {
+
+    
     return (
         <div className="container">
             <h1>Welcome to the Shop!</h1>
