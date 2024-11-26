@@ -42,8 +42,8 @@ function App() {
       <Routes>
         <Route path="/register" element={<Register />} />
 
-        <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
-        <Route path="/" element={<Home products={products} addToCart={addToCart} />} />
+        <Route path="/" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
+        <Route path="/home" element={<Home products={products} addToCart={addToCart} />} />
         <Route path="/product/:id" element={<ProductDetail products={products} addToCart={addToCart} />} />
         <Route path="/cart" element={<Cart cart={cart} setCart={setCart} />} />
 
