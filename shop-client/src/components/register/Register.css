@@ -1,0 +1,59 @@
+/* CSS riêng cho trang đăng ký */
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #edf2f4;
+    /* Màu nền dịu nhẹ */
+}
+
+.register-box {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+.register-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2b2d42;
+    margin-bottom: 20px;
+}
+
+.register-container .form-group label {
+    font-weight: bold;
+    color: #495057;
+}
+
+.register-container .form-group input {
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    border: 1px solid #ced4da;
+    padding: 10px;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.register-button {
+    background-color: #2b2d42;
+    color: white;
+    border-radius: 6px;
+    width: 100%;
+    padding: 10px;
+}
+
+.register-button:hover {
+    background-color: #1d2130;
+    /* Tối màu khi hover */
+}
+
+.register-message {
+    color: #e63946;
+    margin-top: 10px;
+    font-size: 14px;
+}
