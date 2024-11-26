@@ -15,7 +15,7 @@ function Login({ setIsAuthenticated }) {
             setIsAuthenticated(true); // Đăng nhập thành công
             setMessage('Đăng nhập thành công!');
             setTimeout(() => {
-                navigate('/'); // Chuyển đến trang chính (Home)
+                navigate('/home'); // Chuyển đến trang chính (Home)
             }, 1500); // Thời gian chờ trước khi chuyển
         } else {
             setMessage('Email hoặc mật khẩu không đúng.'); // Thông báo lỗi
