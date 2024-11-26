@@ -1,4 +1,4 @@
-package dev.mchq.shop;
+package dev.mchq.shop.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

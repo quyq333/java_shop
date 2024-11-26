@@ -1,6 +1,8 @@
-package dev.mchq.shop;
+package dev.mchq.shop.controller;
 
 
+import dev.mchq.shop.service.ProductService;
+import dev.mchq.shop.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,11 +13,11 @@ import java.util.Optional;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/api/v1/products")
+@RequestMapping("/api/v1")
 public class ProductController {
     @Autowired
     private ProductService productService;
-    @GetMapping
+    @GetMapping("/products")
     public ResponseEntity<List<Product>> getAllProducts(){
         return new ResponseEntity<List<Product>>(productService.allProducts(), HttpStatus.OK);
 

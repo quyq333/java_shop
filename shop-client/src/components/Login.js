@@ -1,27 +1,40 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Sử dụng react-router-dom để chuyển trang
+import axios from 'axios';
+const Login = () => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [message, setMessage] = useState("");
+    const navigate = useNavigate(); 
+  
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+  
+      // Thực hiện gửi thông tin đăng nhập lên backend
+      try {
+        const response = await axios.post("http://localhost:8080/api/v1/login", {
+          email: email,
+          password: password,
+        });
+        
+        // Nếu đăng nhập thành công
+        setMessage(response.data);  // Thông báo từ backend
+        alert('Đăng nhập thành công!');
 
-function Login({ setIsAuthenticated }) {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [message, setMessage] = useState(''); // Thông báo
-    const navigate = useNavigate(); // Hook để chuyển trang
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        // Logic kiểm tra đăng nhập
-        if (email === 'test@example.com' && password === 'password') {
-            setIsAuthenticated(true); // Đăng nhập thành công
-            setMessage('Đăng nhập thành công!');
+            // Chuyển hướng về trang đăng nhập sau 2 giây
             setTimeout(() => {
-                navigate('/'); // Chuyển đến trang chính (Home)
-            }, 1500); // Thời gian chờ trước khi chuyển
+                navigate('/home'); // Chuyển hướng tới trang đăng nhập
+            }, 0);
+      } catch (error) {
+        // Nếu có lỗi
+        if (error.response) {
+          setMessage(error.response.data);  // Lỗi từ backend (ví dụ: thông tin sai)
         } else {
-            setMessage('Email hoặc mật khẩu không đúng.'); // Thông báo lỗi
+          setMessage("Something went wrong!");  // Lỗi khác
         }
+      }
     };
-
+  
     return (
         <div className="container">
             <h1>Login</h1>
