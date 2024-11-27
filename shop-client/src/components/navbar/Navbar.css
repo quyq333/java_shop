@@ -1,0 +1,41 @@
+/* Đặt màu sắc và font */
+.navbar {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #e3e3e3;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    color: #007bff !important;
+}
+
+.nav-link {
+    color: #333;
+    font-weight: 500;
+    padding: 10px 15px;
+}
+
+.nav-link:hover {
+    color: #007bff;
+    text-decoration: none;
+}
+
+/* Hiệu ứng khi hover trên các item */
+.navbar-nav .nav-item {
+    transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-item:hover {
+    transform: scale(1.05);
+    background-color: #e7f1ff;
+}
+
+/* Hiệu ứng cho các nút trên di động */
+.navbar-toggler-icon {
+    background-color: #007bff;
+}
+
+/* Thêm shadow cho navbar */
+.navbar-light.bg-light.shadow-sm {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

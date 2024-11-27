@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './Login.css'; // Import CSS tuỳ chỉnh
+import axios from 'axios'; // Thư viện hỗ trợ gửi HTTP request
+import './Login.css'; // CSS tuỳ chỉnh
 
 function Login({ setIsAuthenticated }) {
     const [email, setEmail] = useState('');
@@ -8,18 +9,31 @@ function Login({ setIsAuthenticated }) {
     const [message, setMessage] = useState(''); // Thông báo
     const navigate = useNavigate(); // Hook để chuyển trang
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Logic kiểm tra đăng nhập
-        if (email === 'test@example.com' && password === 'password') {
-            setIsAuthenticated(true); // Đăng nhập thành công
-            setMessage('Đăng nhập thành công!');
+        try {
+            // Gửi yêu cầu đăng nhập đến API
+            const response = await axios.post("http://localhost:8080/api/v1/login", {
+                email: email,
+                password: password,
+            });
+
+            // Nếu đăng nhập thành công
+            setMessage(response.data); // Hiển thị thông báo từ backend
+            alert('Đăng nhập thành công!');
+            setIsAuthenticated(true); // Đặt trạng thái đã xác thực (nếu cần)
+
             setTimeout(() => {
                 navigate('/home'); // Chuyển đến trang chính (Home)
             }, 1500); // Thời gian chờ trước khi chuyển
-        } else {
-            setMessage('Email hoặc mật khẩu không đúng.'); // Thông báo lỗi
+        } catch (error) {
+            // Xử lý lỗi
+            if (error.response) {
+                setMessage(error.response.data); // Hiển thị thông báo lỗi từ backend
+            } else {
+                setMessage("Something went wrong!"); // Lỗi khác (ví dụ: không kết nối được API)
+            }
         }
     };
 
@@ -52,6 +66,8 @@ function Login({ setIsAuthenticated }) {
                     </div>
                     <button type="submit" className="btn btn-primary login-button">Đăng nhập</button>
                 </form>
+
+                {/* Hiển thị thông báo lỗi hoặc thành công */}
                 {message && <p className="login-message">{message}</p>}
             </div>
         </div>

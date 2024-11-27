@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from './components/Navbar';
+import Navbar from './components/navbar/Navbar';
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
-import Home from './components/Home';
-import ProductDetail from './components/ProductDetail';
-import Cart from './components/Cart';
+import Home from './components/home/Home';
+import ProductDetail from './components/productDetail/ProductDetail';
+import Cart from './components/cart/Cart';
 import Login from './components/login/Login';
 import Register from './components/register/Register';
 import api from './api/axiosConfig';
 import Admin from './components/Admin';
 import { BrowserRouter } from "react-router-dom";
-import Checkout from './components/Checkout';
+import Checkout from './components/checkout/Checkout';
 
 function App() {
   const [products, setProducts] = useState([]);
