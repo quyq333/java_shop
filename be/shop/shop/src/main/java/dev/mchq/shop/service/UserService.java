@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -28,16 +29,19 @@ public class UserService {
     }
 
     public boolean authenticate(String email, String password) {
-        // Tìm người dùng qua email, trả về Optional<User>
+
         Optional<User> userOptional = userRepository.findByEmail(email);
 
-        // Kiểm tra nếu người dùng tồn tại và so sánh mật khẩu
+
         if (userOptional.isPresent()) {
-            User user = userOptional.get();  // Lấy đối tượng User từ Optional
-            return user.getPassword().equals(password);  // So sánh mật khẩu
+            User user = userOptional.get();
+            return user.getPassword().equals(password);
         }
 
-        return false;  // Không tìm thấy người dùng hoặc mật khẩu sai
+        return false;
+    }
+    public List<User> allUsers(){
+        return userRepository.findAll();
     }
 }
 

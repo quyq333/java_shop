@@ -3,6 +3,7 @@ package dev.mchq.shop.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -12,8 +13,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @AllArgsConstructor
 public class User {
     @Id
-    private String id;
+    private ObjectId id;
+    private String name;
     private String email;
+    private String phoneNumber;
+    private String location;
+    private String gender;
+
     private String password;
 
     public String getEmail() {
@@ -31,6 +37,7 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
 
 
 
