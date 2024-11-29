@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
 
 import axiosConfig from '../api/axiosConfig';
 function ProductsContent({ product }) {
@@ -98,7 +99,10 @@ function ProductsContent({ product }) {
                 <td>{product.quantity}</td>
                 <td style={{ textAlign: "center", padding: "10px" }}>
 
-                  <a
+
+
+                  <Link
+                    to={`/editProduct/${product.id}`}
                     style={{
                       textDecoration: "none",
                       color: "white",
@@ -106,9 +110,12 @@ function ProductsContent({ product }) {
                       padding: "8px 16px",
                       borderRadius: "4px",
                       marginRight: "8px",
-                      transition: "background-color 0.3s"
+                      transition: "background-color 0.3s",
                     }}
-                    href="">Edit</a>
+                  >
+                    Edit
+                  </Link>
+
                   <a
                     style={{
                       textDecoration: "none",

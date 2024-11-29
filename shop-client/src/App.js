@@ -11,6 +11,7 @@ import axiosConfig from './api/axiosConfig';
 
 import Admin from './themeAdmin/Admin';
 import ProductsAdmin from './themeAdmin/AdminProducts';
+import EditProduct from './themeAdmin/EditProduct';
 
 
 
@@ -66,6 +67,7 @@ function App() {
         <Route path="/products" element={<ProductsAdmin />} />
 
         <Route path="/createProduct" element={<CreateProduct />} />
+        <Route path="/editProduct/:id" element={<EditProduct />} />
 
 
         {/* Truyền giỏ hàng và tổng tiền sang trang thanh toán */}

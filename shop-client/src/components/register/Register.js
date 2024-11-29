@@ -1,15 +1,28 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Sử dụng useNavigate thay vì useHistory
-import './Register.css'; // Thêm file CSS tùy chỉnh cho Register
+import { useNavigate } from 'react-router-dom';
+import './Register.css';
 
 function Register() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [fullName, setFullName] = useState('');
+    const [phone, setPhone] = useState('');
+    const [gender, setGender] = useState('');
+    const [address, setAddress] = useState('');
     const [message, setMessage] = useState('');
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        const userData = {
+            email,
+            password,
+            fullName,
+            phone,
+            gender,
+            address,
+        };
 
         try {
             const response = await fetch("http://localhost:8080/api/v1/register", {
@@ -17,7 +30,7 @@ function Register() {
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify({ email, password }),
+                body: JSON.stringify(userData),
             });
 
             const data = await response.text();
@@ -59,6 +72,53 @@ function Register() {
                             placeholder="Nhập mật khẩu"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Tên người dùng</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Nhập tên người dùng"
+                            value={fullName}
+                            onChange={(e) => setFullName(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Số điện thoại</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Nhập số điện thoại"
+                            value={phone}
+                            onChange={(e) => setPhone(e.target.value)}
+                            required
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label>Giới tính</label>
+                        <select
+                            className="form-control"
+                            value={gender}
+                            onChange={(e) => setGender(e.target.value)}
+                            required
+                        >
+                            <option value="">Chọn giới tính</option>
+                            <option value="male">Nam</option>
+                            <option value="female">Nữ</option>
+                            <option value="other">Khác</option>
+                        </select>
+                    </div>
+                    <div className="form-group">
+                        <label>Địa chỉ</label>
+                        <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Nhập địa chỉ"
+                            value={address}
+                            onChange={(e) => setAddress(e.target.value)}
                             required
                         />
                     </div>
