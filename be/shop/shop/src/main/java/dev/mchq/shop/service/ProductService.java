@@ -26,5 +26,9 @@ public class ProductService {
     public Product addProduct(Product product){
         return productRepository.save(product);
     }
+
+    public void deleteProduct(Integer id) {
+        productRepository.deleteById(id); // Xóa sản phẩm bằng id
+    }
 }
 

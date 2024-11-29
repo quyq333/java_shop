@@ -106,11 +106,41 @@ function EditProduct({ products }) {
                     />
                 </div>
                 <div className="form-group">
-                    <label>Ảnh:</label>
+                    <label>Poster URL:</label>
                     <input
                         type="text"
-                        name="image"
-                        value={product.image || ""}
+                        name="poster"
+                        value={product.poster || ""}
+                        onChange={handleInputChange}
+                        className="form-control"
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Image 1 URL:</label>
+                    <input
+                        type="text"
+                        name="image1"
+                        value={product.image[0] || ""}
+                        onChange={handleInputChange}
+                        className="form-control"
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Image 2 URL:</label>
+                    <input
+                        type="text"
+                        name="image2"
+                        value={product.image[1] || ""}
+                        onChange={handleInputChange}
+                        className="form-control"
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Image 3 URL:</label>
+                    <input
+                        type="text"
+                        name="image3"
+                        value={product.image[2] || ""}
                         onChange={handleInputChange}
                         className="form-control"
                     />

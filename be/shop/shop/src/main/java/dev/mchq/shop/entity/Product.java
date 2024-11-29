@@ -134,6 +134,15 @@ public class Product {
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
+    public String getImage1() {
+        return image != null && image.size() > 0 ? image.get(0) : null;
+    }
+    public String getImage2() {
+        return image != null && image.size() > 0 ? image.get(1) : null;
+    }
+    public String getImage3() {
+        return image != null && image.size() > 0 ? image.get(2) : null;
+    }
 
 }
 
