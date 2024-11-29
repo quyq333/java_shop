@@ -1,0 +1,36 @@
+/* Container chính của form */
+.content-wrapper {
+    width: 100%;
+    /* Chiếm toàn bộ chiều rộng */
+    padding: 10px;
+}
+
+/* Chỉnh sửa card để căn giữa form */
+.card {
+    width: 100%;
+    max-width: 900px;
+    /* Giới hạn chiều rộng tối đa */
+    margin: 0 auto;
+}
+
+/* Form control */
+.form-control {
+    width: 100%;
+    /* Đảm bảo tất cả các trường dữ liệu chiếm 100% chiều rộng */
+    max-width: 100%;
+    /* Chống hiện tượng text box bị giới hạn */
+}
+
+/* Footer button */
+.card-footer {
+    text-align: right;
+}
+
+.card-footer .btn {
+    padding: 10px 10px;
+}
+
+/* Đảm bảo các trường input có khoảng cách hợp lý */
+.form-group {
+    margin-bottom: 15px;
+}

@@ -19,6 +19,7 @@ import ProductsAdmin from './themeAdmin/AdminProducts';
 
 import { BrowserRouter } from "react-router-dom";
 import Checkout from './components/checkout/Checkout';
+import CreateProduct from './themeAdmin/CreateProduct';
 
 
 function App() {
@@ -62,8 +63,9 @@ function App() {
         <Route path="/" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
         <Route path="/register" element={<Register />} />
         <Route path="/admin" element={<Admin />} />
-        <Route path="/products" element={<ProductsAdmin/>} />
+        <Route path="/products" element={<ProductsAdmin />} />
 
+        <Route path="/createProduct" element={<CreateProduct />} />
 
 
         {/* Truyền giỏ hàng và tổng tiền sang trang thanh toán */}
