@@ -1,18 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from './components/Navbar';
+import Navbar from './components/navbar/Navbar';
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
-import Home from './components/Home';
-import ProductDetail from './components/ProductDetail';
-import Cart from './components/Cart';
-import Login from './components/Login';
-import Register from './components/Register';
-import api from './api/axiosConfig';
+import Home from './components/home/Home';
+import ProductDetail from './components/productDetail/ProductDetail';
+import Cart from './components/cart/Cart';
+import Login from './components/login/Login';
+import Register from './components/register/Register';
+import axiosConfig from './api/axiosConfig';
+
 import Admin from './themeAdmin/Admin';
 import ProductsAdmin from './themeAdmin/AdminProducts';
 
 
 
+
+
+
+import { BrowserRouter } from "react-router-dom";
+import Checkout from './components/checkout/Checkout';
 
 
 function App() {
@@ -22,7 +28,7 @@ function App() {
 
   const getProducts = async () => {
     try {
-      const response = await api.get("/api/v1/products");
+      const response = await axiosConfig.get("/api/v1/products");
       setProducts(response.data);
     } catch (err) {
       console.log("Error fetching products: ", err);
@@ -40,6 +46,9 @@ function App() {
     ]);
   };
 
+  const calculateTotal = () => {
+    return cart.reduce((total, item) => total + item.price * item.quantity, 0);
+  };
 
   return (
     <div className="App">
@@ -50,13 +59,15 @@ function App() {
         <Route path="/product/:id" element={<ProductDetail products={products} addToCart={addToCart} />} />
         <Route path="/cart" element={<Cart cart={cart} setCart={setCart} />} />
 
-        <Route path="/" element={<Login setIsAuthenticated={{ setIsAuthenticated }} />} />
+        <Route path="/" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
         <Route path="/register" element={<Register />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/products" element={<ProductsAdmin/>} />
 
 
 
+        {/* Truyền giỏ hàng và tổng tiền sang trang thanh toán */}
+        <Route path="/checkout" element={<Checkout cart={cart} total={calculateTotal()} />} />
       </Routes>
     </div>
   );

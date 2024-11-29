@@ -1,0 +1,99 @@
+/* Tổng quan */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    /* Màu nền tổng thể */
+}
+
+/* Container */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #edf2f4;
+    /* Màu nền dịu mắt */
+}
+
+/* Box đăng nhập */
+.login-box {
+    background-color: #ffffff;
+    /* Nền trắng cho khung */
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Hiệu ứng đổ bóng */
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+}
+
+/* Tiêu đề */
+.login-title {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #2b2d42;
+    /* Màu chữ */
+}
+
+/* Nhóm form */
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #495057;
+    /* Màu nhạt hơn cho label */
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    font-size: 1rem;
+    background-color: #f8f9fa;
+    /* Màu nền input */
+    color: #495057;
+    /* Màu chữ */
+    transition: border-color 0.3s;
+}
+
+input:focus {
+    border-color: #2b2d42;
+    /* Hiệu ứng focus */
+    outline: none;
+}
+
+/* Nút đăng nhập */
+.login-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #2b2d42;
+    /* Màu xanh đậm */
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-button:hover {
+    background-color: #3a3f58;
+    /* Hiệu ứng hover */
+}
+
+/* Thông báo */
+.login-message {
+    margin-top: 15px;
+    color: #e63946;
+    /* Màu đỏ nhạt cho thông báo lỗi */
+    font-size: 0.9rem;
+    text-align: center;
+}
