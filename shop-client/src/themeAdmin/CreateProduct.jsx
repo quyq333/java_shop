@@ -4,6 +4,9 @@ import Navbar from './template/NavbarAdmin';
 import Sidebar from './template/SidebarAdmin';
 import Footer from './template/FooterAdmin';
 import './template/CreateProduct.css';
+import axiosConfig from '../api/axiosConfig';
+import { useNavigate } from 'react-router-dom';
+
 
 function CreateProduct() {
     // Sử dụng useState để lưu giá trị từ form
@@ -20,7 +23,7 @@ function CreateProduct() {
         quantity: '',
         images: ['', '', ''],
     });
-
+     const navigate = useNavigate();
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({
@@ -29,10 +32,32 @@ function CreateProduct() {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // Gửi dữ liệu form lên backend
-        console.log(formData);
+        try {
+            // Gửi dữ liệu lên backend (Giả sử backend API là /api/v1/products/create)
+            const response = await fetch('http://localhost:8080/api/v1/products/create', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+          
+            if (response.ok) {
+                // Hiển thị thông báo thành công
+                alert('Product added successfully!');
+                // Chuyển hướng đến màn hình hiển thị sản phẩm
+                navigate('/products');  // Địa chỉ của màn hình hiển thị sản phẩm
+            } else {
+                // Hiển thị thông báo lỗi nếu có
+                alert('Failed to add product!');
+            }
+          } catch (error) {
+            // Xử lý lỗi
+            console.error('Error adding product:', error);
+            alert('An error occurred!');
+          }
     };
 
     return (
@@ -74,6 +99,7 @@ function CreateProduct() {
                                         <form onSubmit={handleSubmit}>
                                             <div className="card-body">
                                                 {[
+                                                    { name: "id", label: "ID", type: "text" },
                                                     { name: "productId", label: "Product ID", type: "text" },
                                                     { name: "title", label: "Title", type: "text" },
                                                     { name: "type", label: "Type", type: "text" },

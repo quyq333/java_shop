@@ -25,6 +25,9 @@ public class ProductController {
     @GetMapping("/{id}")
     public ResponseEntity<Optional<Product>> getSingleProduct(@PathVariable Integer id ){
         return new ResponseEntity<Optional<Product>>(productService.singleProduct(id), HttpStatus.OK);
-
+    }
+    @PostMapping("/products/create")
+    public ResponseEntity<Product> addProduct(@RequestBody Product product){
+        return ResponseEntity.ok(productService.addProduct(product));
     }
 }
