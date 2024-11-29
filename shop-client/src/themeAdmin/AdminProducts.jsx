@@ -1,5 +1,5 @@
 import React from "react";
-import Content from "./ContentProducts";
+import Content from "./DashboardProducts";
 import Css from "./template/CssAdmin";
 import Footer from "./template/FooterAdmin";
 import Navbar from "./template/NavbarAdmin";

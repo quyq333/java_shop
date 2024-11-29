@@ -12,6 +12,7 @@ import axiosConfig from './api/axiosConfig';
 import Admin from './themeAdmin/Admin';
 import ProductsAdmin from './themeAdmin/AdminProducts';
 import EditProduct from './themeAdmin/EditProduct';
+import DashboardUsers from './themeAdmin/DashboardUsers';
 
 
 
@@ -54,7 +55,7 @@ function App() {
 
   return (
     <div className="App">
-      {!['/admin', '/products', '/createProduct'].includes(location.pathname) && <Navbar />}
+      {!['/admin', '/products', '/createProduct', '/users'].includes(location.pathname) && <Navbar />}
 
       <Routes>
         <Route path="/" element={<Home products={products} addToCart={addToCart} />} />
@@ -68,7 +69,8 @@ function App() {
 
         <Route path="/createProduct" element={<CreateProduct />} />
         <Route path="/editProduct/:id" element={<EditProduct products={products} />} />
-
+        <Route path="/users" element={<DashboardUsers />} />
+        
 
         {/* Truyền giỏ hàng và tổng tiền sang trang thanh toán */}
         <Route path="/checkout" element={<Checkout cart={cart} total={calculateTotal()} />} />

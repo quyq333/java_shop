@@ -53,7 +53,7 @@ function Sidebar(){
                         </a>
                       </li>
                       <li className="nav-item">
-                        <a href="./index2.html" className="nav-link">
+                        <a href="./users" className="nav-link">
                           <i className="far fa-circle nav-icon" />
                           <p>Quản lý khách hàng</p>
                         </a>
