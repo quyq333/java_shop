@@ -8,8 +8,8 @@ import Cart from './components/Cart';
 import Login from './components/Login';
 import Register from './components/Register';
 import api from './api/axiosConfig';
-import Admin from './components/Admin';
-import { BrowserRouter } from "react-router-dom";
+import Admin from './themeAdmin/Admin';
+import ProductsAdmin from './themeAdmin/AdminProducts';
 
 
 
@@ -43,7 +43,8 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar />
+      {!['/admin', '/products', '/createProduct'].includes(location.pathname) && <Navbar />}
+
       <Routes>
         <Route path="/home" element={<Home products={products} addToCart={addToCart} />} />
         <Route path="/product/:id" element={<ProductDetail products={products} addToCart={addToCart} />} />
@@ -51,7 +52,10 @@ function App() {
 
         <Route path="/" element={<Login setIsAuthenticated={{ setIsAuthenticated }} />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/admin" element={<Admin products={products} setProducts={setProducts} />} />
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/products" element={<ProductsAdmin/>} />
+
+
 
       </Routes>
     </div>
