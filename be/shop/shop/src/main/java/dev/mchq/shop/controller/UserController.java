@@ -12,7 +12,7 @@ import java.util.List;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/api/v1")
+@RequestMapping("/api/v1/")
 public class UserController {
     @Autowired
     private UserService userService;
@@ -38,6 +38,16 @@ public class UserController {
         return new ResponseEntity<List<User>>(userService.allUsers(), HttpStatus.OK);
     }
 
+    // Xóa người dùng theo email
+    @DeleteMapping("/email/{email}")
+    public ResponseEntity<String> deleteUserByEmail(@PathVariable String email) {
+        boolean isDeleted = userService.deleteUserByEmail(email);
+        if (isDeleted) {
+            return ResponseEntity.ok("User deleted successfully");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
+        }
+    }
 
 
 }

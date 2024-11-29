@@ -3,6 +3,7 @@ package dev.mchq.shop.service;
 
 import dev.mchq.shop.repository.UserRepository;
 import dev.mchq.shop.entity.User;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Service;
@@ -40,9 +41,22 @@ public class UserService {
 
         return false;
     }
-    public List<User> allUsers(){
+
+    public List<User> allUsers() {
         return userRepository.findAll();
     }
+
+
+    public boolean deleteUserByEmail(String email) {
+        // Tìm người dùng theo email
+        User user = userRepository.findByEmail(email).orElse(null);
+        if (user != null) {
+            userRepository.delete(user); // Xóa người dùng nếu tồn tại
+            return true;
+        }
+        return false;
+    }
+
 }
 
 
