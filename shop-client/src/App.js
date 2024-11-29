@@ -67,7 +67,7 @@ function App() {
         <Route path="/products" element={<ProductsAdmin />} />
 
         <Route path="/createProduct" element={<CreateProduct />} />
-        <Route path="/editProduct/:id" element={<EditProduct />} />
+        <Route path="/editProduct/:id" element={<EditProduct products={products} />} />
 
 
         {/* Truyền giỏ hàng và tổng tiền sang trang thanh toán */}

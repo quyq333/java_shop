@@ -30,4 +30,30 @@ public class ProductController {
     public ResponseEntity<Product> addProduct(@RequestBody Product product){
         return ResponseEntity.ok(productService.addProduct(product));
     }
+    @PutMapping("/products/{id}")
+    public ResponseEntity<Product> updateProduct(
+            @PathVariable Integer id,
+            @RequestBody Product updatedProduct) {
+        Optional<Product> existingProduct = productService.singleProduct(id);
+        if (existingProduct.isPresent()) {
+            // Cập nhật các thuộc tính sản phẩm
+            Product product = existingProduct.get();
+            product.setTitle(updatedProduct.getTitle());
+            product.setType(updatedProduct.getType());
+            product.setReleaseDate(updatedProduct.getReleaseDate());
+            product.setImage(updatedProduct.getImage());
+            product.setStatus(updatedProduct.getStatus());
+            product.setColor(updatedProduct.getColor());
+            product.setPrice(updatedProduct.getPrice());
+            product.setQuantity(updatedProduct.getQuantity());
+
+            // Lưu sản phẩm đã cập nhật
+            Product savedProduct = productService.addProduct(product);
+            return ResponseEntity.ok(savedProduct);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+    }
+
+
 }

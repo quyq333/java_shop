@@ -3,7 +3,7 @@ import Css from './template/CssAdmin';
 import Navbar from './template/NavbarAdmin';
 import Sidebar from './template/SidebarAdmin';
 import Footer from './template/FooterAdmin';
-import './template/CreateProduct.css';
+import './Css/CreateProduct.css';
 import axiosConfig from '../api/axiosConfig';
 import { useNavigate } from 'react-router-dom';
 
@@ -23,7 +23,7 @@ function CreateProduct() {
         quantity: '',
         images: ['', '', ''],
     });
-     const navigate = useNavigate();
+    const navigate = useNavigate();
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({
@@ -43,7 +43,7 @@ function CreateProduct() {
                 },
                 body: JSON.stringify(formData),
             });
-          
+
             if (response.ok) {
                 // Hiển thị thông báo thành công
                 alert('Product added successfully!');
@@ -53,11 +53,11 @@ function CreateProduct() {
                 // Hiển thị thông báo lỗi nếu có
                 alert('Failed to add product!');
             }
-          } catch (error) {
+        } catch (error) {
             // Xử lý lỗi
             console.error('Error adding product:', error);
             alert('An error occurred!');
-          }
+        }
     };
 
     return (

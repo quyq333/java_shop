@@ -1,24 +1,35 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axiosConfig from "../api/axiosConfig";
+import './Css/EditProduct.css'; // Import file CSS
 
-function EditProduct() {
+function EditProduct({ products }) {
     const { id } = useParams(); // Lấy id từ URL
+    const navigate = useNavigate();
     const [product, setProduct] = useState(null);
-
-    // Lấy thông tin sản phẩm từ API
-    const fetchProduct = async () => {
-        try {
-            const response = await axiosConfig.get(`/api/v1/products/${id}`);
-            setProduct(response.data);
-        } catch (err) {
-            console.error("Error fetching product:", err);
-        }
-    };
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
-        fetchProduct();
-    }, [id]);
+        const localProduct = products.find((p) => p.id === Number(id));
+        if (localProduct) {
+            setProduct(localProduct);
+            setLoading(false);
+        } else {
+            const fetchProduct = async () => {
+                try {
+                    const response = await axiosConfig.get(`/api/v1/products/${id}`);
+                    setProduct(response.data);
+                } catch (err) {
+                    setError("Không thể tải sản phẩm. Hãy thử lại!");
+                    console.error("Error fetching product:", err);
+                } finally {
+                    setLoading(false);
+                }
+            };
+            fetchProduct();
+        }
+    }, [id, products]);
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
@@ -29,46 +40,122 @@ function EditProduct() {
         e.preventDefault();
         try {
             await axiosConfig.put(`/api/v1/products/${id}`, product);
-            alert("Product updated successfully!");
+            alert("Cập nhật sản phẩm thành công!");
+            navigate("/products"); // Điều hướng về danh sách sản phẩm
         } catch (err) {
             console.error("Error updating product:", err);
+            alert("Cập nhật thất bại. Vui lòng thử lại!");
         }
     };
 
-    if (!product) return <p>Loading...</p>;
+    if (loading) return <p>Đang tải...</p>;
+    if (error) return <p>{error}</p>;
 
     return (
-        <div>
-            <h2>Edit Product</h2>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Product Name:</label>
+        <div className="edit-product-container">
+            <h2 className="form-title">Chỉnh sửa sản phẩm</h2>
+            <form onSubmit={handleSubmit} className="product-form">
+                <div className="form-group">
+                    <label>ID Sản phẩm:</label>
+                    <input
+                        type="text"
+                        name="id"
+                        value={product.id || ""}
+                        disabled // Không cho phép chỉnh sửa ID
+                        className="form-control"
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Product Id:</label>
+                    <input
+                        type="text"
+                        name="productId"
+                        value={product.productId || ""}
+                        onChange={handleInputChange}
+                        className="form-control"
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Tên sản phẩm:</label>
                     <input
                         type="text"
                         name="title"
                         value={product.title || ""}
                         onChange={handleInputChange}
+                        className="form-control"
                     />
                 </div>
-                <div>
-                    <label>Price:</label>
+                <div className="form-group">
+                    <label>Loại sản phẩm:</label>
+                    <input
+                        type="text"
+                        name="type"
+                        value={product.type || ""}
+                        onChange={handleInputChange}
+                        className="form-control"
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Ngày phát hành:</label>
+                    <input
+                        type="date"
+                        name="releaseDate"
+                        value={product.releaseDate || ""}
+                        onChange={handleInputChange}
+                        className="form-control"
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Ảnh:</label>
+                    <input
+                        type="text"
+                        name="image"
+                        value={product.image || ""}
+                        onChange={handleInputChange}
+                        className="form-control"
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Trạng thái:</label>
+                    <input
+                        type="text"
+                        name="status"
+                        value={product.status || ""}
+                        onChange={handleInputChange}
+                        className="form-control"
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Màu sắc:</label>
+                    <input
+                        type="text"
+                        name="color"
+                        value={product.color || ""}
+                        onChange={handleInputChange}
+                        className="form-control"
+                    />
+                </div>
+                <div className="form-group">
+                    <label>Giá:</label>
                     <input
                         type="number"
                         name="price"
                         value={product.price || ""}
                         onChange={handleInputChange}
+                        className="form-control"
                     />
                 </div>
-                <div>
-                    <label>Quantity:</label>
+                <div className="form-group">
+                    <label>Số lượng:</label>
                     <input
                         type="number"
                         name="quantity"
                         value={product.quantity || ""}
                         onChange={handleInputChange}
+                        className="form-control"
                     />
                 </div>
-                <button type="submit">Save Changes</button>
+                <button type="submit" className="btn btn-primary">Lưu thay đổi</button>
             </form>
         </div>
     );
