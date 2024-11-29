@@ -5,8 +5,8 @@ import './Register.css';
 function Register() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [fullName, setFullName] = useState('');
-    const [phone, setPhone] = useState('');
+    const [name, setName] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
     const [gender, setGender] = useState('');
     const [address, setAddress] = useState('');
     const [message, setMessage] = useState('');
@@ -18,8 +18,8 @@ function Register() {
         const userData = {
             email,
             password,
-            fullName,
-            phone,
+            name,
+            phoneNumber,
             gender,
             address,
         };
@@ -34,18 +34,25 @@ function Register() {
             });
 
             const data = await response.text();
-            setMessage(data); // Hiển thị kết quả từ server
-
-            // Đăng ký thành công
-            alert('Đăng ký thành công!');
-            setTimeout(() => {
-                navigate('/'); // Chuyển hướng về trang đăng nhập
-            }, 1500);
+            
+            if (response.status === 200 && data === "Email already exists!") {
+                // Nếu backend trả về lỗi email đã tồn tại
+                setMessage("Email đã tồn tại, vui lòng chọn email khác!");
+                alert('Đăng ký thất bại: Email đã tồn tại');
+            } else if (response.status === 200) {
+                // Đăng ký thành công
+                alert('Đăng ký thành công!');
+                navigate('/'); // Chuyển hướng về trang đăng nhập sau khi đăng ký thành công
+            } else {
+                setMessage(data); // Hiển thị thông báo từ server nếu có lỗi khác
+                alert('Đăng ký thất bại. Vui lòng thử lại!');
+            }
         } catch (error) {
             console.error("Error:", error);
             alert('Đăng ký thất bại. Vui lòng thử lại!');
             setMessage("Something went wrong!");
         }
+    
     };
 
     return (
@@ -81,8 +88,8 @@ function Register() {
                             type="text"
                             className="form-control"
                             placeholder="Nhập tên người dùng"
-                            value={fullName}
-                            onChange={(e) => setFullName(e.target.value)}
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
                             required
                         />
                     </div>
@@ -92,8 +99,8 @@ function Register() {
                             type="text"
                             className="form-control"
                             placeholder="Nhập số điện thoại"
-                            value={phone}
-                            onChange={(e) => setPhone(e.target.value)}
+                            value={phoneNumber}
+                            onChange={(e) => setPhoneNumber(e.target.value)}
                             required
                         />
                     </div>
