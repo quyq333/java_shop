@@ -57,11 +57,11 @@ function App() {
       {!['/admin', '/products', '/createProduct'].includes(location.pathname) && <Navbar />}
 
       <Routes>
-        <Route path="/home" element={<Home products={products} addToCart={addToCart} />} />
+        <Route path="/" element={<Home products={products} addToCart={addToCart} />} />
         <Route path="/product/:id" element={<ProductDetail products={products} addToCart={addToCart} />} />
         <Route path="/cart" element={<Cart cart={cart} setCart={setCart} />} />
 
-        <Route path="/" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
+        <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
         <Route path="/register" element={<Register />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/products" element={<ProductsAdmin />} />
