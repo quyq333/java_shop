@@ -1,5 +1,6 @@
 package dev.mchq.shop.repository;
 
+import dev.mchq.shop.entity.Product;
 import dev.mchq.shop.entity.User;
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
@@ -14,5 +15,7 @@ public interface UserRepository extends MongoRepository<User, String> {
     void deleteById(ObjectId id);  // Xóa người dùng theo ObjectId
     void deleteByEmail(String email);  // Xóa người dùng theo email
 
-    Optional<User> findById(ObjectId objectId);
+
+
+
 }

@@ -23,7 +23,7 @@ public class ProductController {
         return new ResponseEntity<List<Product>>(productService.allProducts(), HttpStatus.OK);
 
     }
-    @GetMapping("/{id}")
+    @GetMapping("/products/{id}")
     public ResponseEntity<Optional<Product>> getSingleProduct(@PathVariable Integer id ){
         return new ResponseEntity<Optional<Product>>(productService.singleProduct(id), HttpStatus.OK);
     }

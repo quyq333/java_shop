@@ -1,6 +1,7 @@
 package dev.mchq.shop.controller;
 
 
+import dev.mchq.shop.entity.Product;
 import dev.mchq.shop.service.UserService;
 import dev.mchq.shop.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -37,15 +39,19 @@ public class UserController {
     public ResponseEntity<List<User>> getAllUsers(){
         return new ResponseEntity<List<User>>(userService.allUsers(), HttpStatus.OK);
     }
-
+    @GetMapping("users/{email}")
+    public ResponseEntity<Optional<User>> getSingleUser(@PathVariable String email ){
+        return new ResponseEntity<Optional<User>>(userService.singleUser(email), HttpStatus.OK);
+    }
     // Xóa người dùng theo email
-    @DeleteMapping("/email/{email}")
-    public ResponseEntity<String> deleteUserByEmail(@PathVariable String email) {
-        boolean isDeleted = userService.deleteUserByEmail(email);
-        if (isDeleted) {
-            return ResponseEntity.ok("User deleted successfully");
+    @DeleteMapping("/users/{email}")
+    public ResponseEntity<Void> deleteUser(@PathVariable String email) {
+        Optional<User> existingEmail = userService.singleUser(email);
+        if (existingEmail.isPresent()) {
+            userService.deleteUserByEmail(email); // Gọi service để xóa sản phẩm
+            return ResponseEntity.noContent().build(); // Trả về status 204 (No Content) khi xóa thành công
         } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build(); // Trả về 404 nếu không tìm thấy sản phẩm
         }
     }
 

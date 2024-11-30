@@ -1,6 +1,7 @@
 package dev.mchq.shop.service;
 
 
+import dev.mchq.shop.entity.Product;
 import dev.mchq.shop.repository.UserRepository;
 import dev.mchq.shop.entity.User;
 import org.bson.types.ObjectId;
@@ -55,6 +56,9 @@ public class UserService {
             return true;
         }
         return false;
+    }
+    public Optional<User> singleUser(String email){
+        return userRepository.findByEmail(email);
     }
 
 }

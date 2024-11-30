@@ -26,8 +26,9 @@ function DashboardUsers() {
 
     try {
       console.log("Trying to delete user with email:", email);  // Debug log
-      const response = await axiosConfig.delete(`/api/v1/users/email/${email}`);
+      const response = await axiosConfig.delete(`/api/v1/users/${email}`);
       console.log("User deleted: ", response.data);
+      alert("Đã xóa thành công!")
 
       // Sau khi xóa, cập nhật lại danh sách người dùng
       setUsers(users.filter(user => user.email !== email));
