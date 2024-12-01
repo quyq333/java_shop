@@ -43,11 +43,20 @@ function App() {
   }, []);
 
   const addToCart = (product) => {
-    setCart((prevCart) => [
-      ...prevCart,
-      { ...product, quantity: 1 }  // Khởi tạo số lượng hiển thị là 1
-    ]);
+    setCart((prevCart) => {
+      const existingProduct = prevCart.find(item => item.id === product.id);
+      if (existingProduct) {
+        return prevCart.map(item =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + 1 }  // Tăng số lượng nếu sản phẩm đã có
+            : item
+        );
+      } else {
+        return [...prevCart, { ...product, quantity: 1 }];  // Thêm sản phẩm mới nếu chưa có
+      }
+    });
   };
+
 
   const calculateTotal = () => {
     return cart.reduce((total, item) => total + item.price * item.quantity, 0);
@@ -58,11 +67,11 @@ function App() {
       {!['/admin', '/products', '/createProduct', '/users'].includes(location.pathname) && <Navbar />}
 
       <Routes>
-        <Route path="/" element={<Home products={products} addToCart={addToCart} />} />
+        <Route path="/home" element={<Home products={products} addToCart={addToCart} />} />
         <Route path="/product/:id" element={<ProductDetail products={products} addToCart={addToCart} />} />
         <Route path="/cart" element={<Cart cart={cart} setCart={setCart} />} />
 
-        <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
+        <Route path="/" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
         <Route path="/register" element={<Register />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/products" element={<ProductsAdmin />} />
@@ -70,7 +79,7 @@ function App() {
         <Route path="/createProduct" element={<CreateProduct />} />
         <Route path="/editProduct/:id" element={<EditProduct products={products} />} />
         <Route path="/users" element={<DashboardUsers />} />
-        
+
 
         {/* Truyền giỏ hàng và tổng tiền sang trang thanh toán */}
         <Route path="/checkout" element={<Checkout cart={cart} total={calculateTotal()} />} />
