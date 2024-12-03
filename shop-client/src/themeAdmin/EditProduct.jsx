@@ -6,12 +6,26 @@ import './Css/EditProduct.css'; // Import file CSS
 function EditProduct({ products }) {
     const { id } = useParams(); // Lấy id từ URL
     const navigate = useNavigate();
-    const [product, setProduct] = useState(null);
+    // const [product, setProduct] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
+    const [product, setProduct] = useState({
+        id: "",
+        productId: "",
+        title: "",
+        type: "",
+        releaseDate: "",
+        poster: "",
+        image: ["", "", ""],
+        status: "",
+        color: "",
+        price: 0,
+        quantity: 0
+    });
+
     useEffect(() => {
-        const localProduct = products.find((p) => p.id === Number(id));
+        const localProduct = products.find((p) => p.id == Number(id));
         if (localProduct) {
             setProduct(localProduct);
             setLoading(false);

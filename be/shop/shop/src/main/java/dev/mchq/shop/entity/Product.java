@@ -36,16 +36,11 @@ public class Product {
 
     private Integer price;
 
+    
     private List<String> image;
 
     private Integer quantity;
-    public Integer getId() {
-        return id;
-    }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public String getProductId() {
         return productId;

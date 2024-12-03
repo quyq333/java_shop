@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import Css from './template/CssAdmin';
 import Navbar from './template/NavbarAdmin';
@@ -34,6 +35,7 @@ function CreateProduct() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        // console.log('Form data to be submitted:', formData.images);
         try {
             // Gửi dữ liệu lên backend (Giả sử backend API là /api/v1/products/create)
             const response = await fetch('http://localhost:8080/api/v1/products/create', {
@@ -43,7 +45,8 @@ function CreateProduct() {
                 },
                 body: JSON.stringify(formData),
             });
-
+            // const responseData = await response.json();
+                // console.log("Response from backend:", responseData); // Kiểm tra dữ liệu phản hồi
             if (response.ok) {
                 // Hiển thị thông báo thành công
                 alert('Product added successfully!');
@@ -118,7 +121,7 @@ function CreateProduct() {
                                                             className="form-control"
                                                             id={field.name}
                                                             name={field.name}
-                                                            value={formData[field.name]}
+                                                            value={formData[field.name]|| ''}
                                                             onChange={handleChange}
                                                             placeholder={`Enter ${field.label.toLowerCase()}`}
                                                         />
@@ -134,11 +137,11 @@ function CreateProduct() {
                                                             type="text"
                                                             className="form-control mb-2"
                                                             placeholder={`Image URL ${index + 1}`}
-                                                            value={image}
+                                                            value={formData[image]}
                                                             onChange={(e) => {
                                                                 const newImages = [...formData.images];
                                                                 newImages[index] = e.target.value;
-                                                                setFormData({ ...formData, images: newImages });
+                                                                setFormData({ ...formData, image: newImages });
                                                             }}
                                                         />
                                                     ))}

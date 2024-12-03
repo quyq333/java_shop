@@ -95,7 +95,7 @@ function ProductsContent() {
                 <td>{product.id}</td>
                 <td>{product.productId}</td>
                 <td>{product.title}</td>
-                <td>{product.type === 1 ? "Giày" : "Áo"}</td>
+                <td>{product.type === "1" ? "Giày" : "Áo"}</td>
                 <td>{product.releaseDate}</td>
                 <td><img style={{ borderRadius: "5px", maxWidth: "100px" }} src={product.poster} alt={product.productId} /></td>
                 <td>{product.status}</td>
