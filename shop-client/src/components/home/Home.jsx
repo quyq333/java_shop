@@ -5,7 +5,7 @@ import './Home.css'; // Thêm CSS tùy chỉnh
 function Home({ products, addToCart }) {
     return (
         <div className="container">
-            <h1 className="welcome-title">Welcome to the Shop!</h1>
+            <h1 className="welcome-title">Welcome to QQ!</h1>
             <div className="row">
                 {products.length === 0 ? (
                     <p className="loading-text">Loading products...</p>
