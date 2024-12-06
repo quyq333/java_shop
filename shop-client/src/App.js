@@ -23,6 +23,8 @@ import { BrowserRouter } from "react-router-dom";
 import Checkout from './components/checkout/Checkout';
 import CreateProduct from './themeAdmin/CreateProduct';
 
+import Footer from './components/footer/Footer';
+import Search from './components/search/Search';
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -89,7 +91,12 @@ function App() {
 
         {/* Truyền giỏ hàng và tổng tiền sang trang thanh toán */}
         <Route path="/checkout" element={<Checkout cart={cart} total={calculateTotal()} />} />
+
+        <Route path="/search" element={<Search products={products} addToCart={addToCart} />} />
       </Routes>
+
+      {/* Footer */}
+      <Footer />
     </div>
   );
 }

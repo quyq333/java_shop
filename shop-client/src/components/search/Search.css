@@ -1,0 +1,165 @@
+/* Cập nhật CSS cho card sản phẩm và các phần tử bên trong */
+.container {
+    padding: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Tăng khoảng cách giữa tiêu đề và ảnh sản phẩm */
+.card-body {
+    padding: 2rem;
+    /* Tăng padding để tạo khoảng cách rộng hơn */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    /* Tăng margin-bottom để tạo khoảng cách giữa tiêu đề và ảnh */
+    font-family: 'Montserrat', sans-serif;
+}
+
+.product-img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    /* Thêm margin dưới ảnh nếu cần */
+}
+
+
+.welcome-title {
+    text-align: center;
+    font-size: 3rem;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    font-family: 'Arial', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.loading-text {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #888;
+}
+
+.product-card {
+    border: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 15px;
+    overflow: hidden;
+    background-color: white;
+    max-width: 100%;
+    padding: 1.5rem;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.product-img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.product-img:hover {
+    transform: scale(1.05);
+}
+
+.card-body {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+.card-price {
+    font-size: 1.4rem;
+    color: #e67e22;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.card-price strong {
+    font-size: 1.5rem;
+}
+
+.btn {
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-outline-primary {
+    background-color: transparent;
+    border: 2px solid #3498db;
+    color: #3498db;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.btn-outline-primary:hover {
+    background-color: #3498db;
+    color: white;
+}
+
+.btn-success {
+    background-color: #2ecc71;
+    border: none;
+    color: white;
+    font-size: 1rem;
+}
+
+.btn-success:hover {
+    background-color: #27ae60;
+}
+
+/* Điều chỉnh độ rộng của các sản phẩm trên các màn hình nhỏ */
+@media (max-width: 767px) {
+    .col-md-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 992px) {
+    .col-md-4 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+/* Thêm kiểu chữ hiện đại cho các tiêu đề và mô tả */
+.card-title,
+.card-price {
+    font-family: 'Roboto', sans-serif;
+}
