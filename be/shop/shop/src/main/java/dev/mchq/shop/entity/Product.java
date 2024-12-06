@@ -36,7 +36,7 @@ public class Product {
 
     private Integer price;
 
-    
+
     private List<String> image;
 
     private Integer quantity;
