@@ -1,5 +1,12 @@
 import React, { useState } from 'react';
 import './Checkout.css'; // File CSS tùy chỉnh
+import axios from 'axios';
+import { Navigate, useNavigate } from 'react-router-dom';
+
+
+
+
+
 
 function Checkout({ cart = [], total }) {
     const [formData, setFormData] = useState({
@@ -7,10 +14,10 @@ function Checkout({ cart = [], total }) {
         phone: '',
         email: '',
         address: '',
-        city: '',
-        district: '',
+
         paymentMethod: 'COD',
     });
+    const navigate = useNavigate(); // Hook để chuyển trang
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -20,10 +27,27 @@ function Checkout({ cart = [], total }) {
         }));
     };
 
-    const handleSubmit = (e) => {
+
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        alert('Đặt hàng thành công!');
+        try {
+            const response = await axios.post('http://localhost:8080/api/v1/orders', {
+                ...formData,
+                cart,
+                total,
+            });
+            if (response.status === 200) {
+                alert('Đặt hàng thành công!');
+                navigate('/home'); 
+                
+            }
+        } catch (error) {
+            console.error('Lỗi khi đặt hàng:', error);
+            alert('Đặt hàng thất bại!');
+        }
     };
+
 
     return (
         <div className="checkout-container">
@@ -84,31 +108,7 @@ function Checkout({ cart = [], total }) {
                             />
                         </div>
 
-                        <div className="form-group">
-                            <label>Tỉnh/Thành phố</label>
-                            <input
-                                type="text"
-                                className="form-input"
-                                name="city"
-                                value={formData.city}
-                                onChange={handleChange}
-                                placeholder="Nhập tỉnh/thành phố"
-                                required
-                            />
-                        </div>
 
-                        <div className="form-group">
-                            <label>Quận/Huyện</label>
-                            <input
-                                type="text"
-                                className="form-input"
-                                name="district"
-                                value={formData.district}
-                                onChange={handleChange}
-                                placeholder="Nhập quận/huyện"
-                                required
-                            />
-                        </div>
                     </div>
 
                     {/* Chọn phương thức thanh toán */}
