@@ -62,8 +62,10 @@ function EditProduct({ products }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        // console.log("Data sent to API:", product.image); // Kiểm tra dữ liệu trước khi gửi
         try {
-            await axiosConfig.put(`/api/v1/products/${id}`, product);
+            const response = await axiosConfig.put(`/api/v1/products/${id}`, product);
+            // console.log("Response from API:", response.data); // Kiểm tra dữ liệu trả về từ backend
             alert("Cập nhật sản phẩm thành công!");
             navigate("/products"); // Điều hướng về danh sách sản phẩm
         } catch (err) {

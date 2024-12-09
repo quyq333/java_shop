@@ -9,6 +9,8 @@ function ProductsContent() {
   const getProducts = async () => {
     try {
       const response = await axiosConfig.get("/api/v1/products");
+      const sortedProducts = response.data.sort((a, b) => b.id - a.id); // Sắp xếp theo id giảm dần
+       setProducts(sortedProducts);
       setProducts(response.data);
     } catch (err) {
       console.log("Error fetching products: ", err);
@@ -35,6 +37,15 @@ function ProductsContent() {
         alert('An error occurred while deleting the product!');
       }
     }
+  };
+  const getProductType = (type) => {
+    if (type === "1") return "Giày";
+    if (type === "2") return "Áo";
+    if (type === "3") return "Túi";
+    if (type === "4") return "Tất";
+    if (type === "5") return "Mũ";
+
+    return "Khác";
   };
 
 
@@ -95,7 +106,7 @@ function ProductsContent() {
                 <td>{product.id}</td>
                 <td>{product.productId}</td>
                 <td>{product.title}</td>
-                <td>{product.type === "1" ? "Giày" : "Áo"}</td>
+                <td>{getProductType(product.type)}</td>
                 <td>{product.releaseDate}</td>
                 <td><img style={{ borderRadius: "5px", maxWidth: "100px" }} src={product.poster} alt={product.productId} /></td>
                 <td>{product.status}</td>
