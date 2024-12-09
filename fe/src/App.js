@@ -22,6 +22,8 @@ import DashboardUsers from './themeAdmin/DashboardUsers';
 import { BrowserRouter } from "react-router-dom";
 import Checkout from './components/checkout/Checkout';
 import CreateProduct from './themeAdmin/CreateProduct';
+import OrderManagement from './themeAdmin/OrderManagement';
+
 
 import Footer from './components/footer/Footer';
 import Search from './components/search/Search';
@@ -87,6 +89,7 @@ function App() {
         <Route path="/createProduct" element={<CreateProduct />} />
         <Route path="/editProduct/:id" element={<EditProduct products={products} />} />
         <Route path="/users" element={<DashboardUsers />} />
+        <Route path="/orders" element={<OrderManagement />} />
 
 
         {/* Truyền giỏ hàng và tổng tiền sang trang thanh toán */}
@@ -97,7 +100,7 @@ function App() {
 
       {/* Footer */}
       {!['/admin', '/products', '/createProduct', '/users', '/'].includes(location.pathname) && <Footer />}
-     
+
     </div>
   );
 }
