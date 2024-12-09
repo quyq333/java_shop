@@ -96,7 +96,8 @@ function App() {
       </Routes>
 
       {/* Footer */}
-      <Footer />
+      {!['/admin', '/products', '/createProduct', '/users', '/'].includes(location.pathname) && <Footer />}
+     
     </div>
   );
 }

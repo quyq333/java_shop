@@ -47,7 +47,17 @@ function EditProduct({ products }) {
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
-        setProduct({ ...product, [name]: value });
+        if (name.startsWith("image")) {
+            // Lấy index của hình ảnh (ví dụ: image1 -> index 0)
+            const index = parseInt(name.replace("image", "")) - 1;
+            const updatedImages = [...product.image];
+            updatedImages[index] = value;
+    
+            setProduct({ ...product, image: updatedImages });
+        } else {
+            setProduct({ ...product, [name]: value });
+        }
+        // setProduct({ ...product, [name]: value });
     };
 
     const handleSubmit = async (e) => {

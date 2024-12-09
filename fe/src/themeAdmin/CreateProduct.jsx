@@ -12,6 +12,7 @@ import { useNavigate } from 'react-router-dom';
 function CreateProduct() {
     // Sử dụng useState để lưu giá trị từ form
     const [formData, setFormData] = useState({
+        id:'',
         productId: '',
         title: '',
         type: '',
@@ -22,7 +23,7 @@ function CreateProduct() {
         color: '',
         price: '',
         quantity: '',
-        images: ['', '', ''],
+        image: ['', '', ''],
     });
     const navigate = useNavigate();
     const handleChange = (e) => {
@@ -30,12 +31,13 @@ function CreateProduct() {
         setFormData({
             ...formData,
             [name]: value
+           
         });
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // console.log('Form data to be submitted:', formData.images);
+        // console.log('Form data to be submitted:', formData.image);
         try {
             // Gửi dữ liệu lên backend (Giả sử backend API là /api/v1/products/create)
             const response = await fetch('http://localhost:8080/api/v1/products/create', {
@@ -121,7 +123,7 @@ function CreateProduct() {
                                                             className="form-control"
                                                             id={field.name}
                                                             name={field.name}
-                                                            value={formData[field.name]|| ''}
+                                                            value={formData[field.name] || ''}
                                                             onChange={handleChange}
                                                             placeholder={`Enter ${field.label.toLowerCase()}`}
                                                         />
@@ -131,7 +133,7 @@ function CreateProduct() {
                                                 {/* Input for images */}
                                                 <div className="form-group">
                                                     <label>Images</label>
-                                                    {formData.images.map((image, index) => (
+                                                    {formData.image.map((image, index) => (
                                                         <input
                                                             key={index}
                                                             type="text"
@@ -139,7 +141,7 @@ function CreateProduct() {
                                                             placeholder={`Image URL ${index + 1}`}
                                                             value={formData[image]}
                                                             onChange={(e) => {
-                                                                const newImages = [...formData.images];
+                                                                const newImages = [...formData.image];
                                                                 newImages[index] = e.target.value;
                                                                 setFormData({ ...formData, image: newImages });
                                                             }}
