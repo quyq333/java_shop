@@ -69,6 +69,17 @@ function Login({ setIsAuthenticated }) {
 
                 {/* Hiển thị thông báo lỗi hoặc thành công */}
                 {message && <p className="login-message">{message}</p>}
+
+                {/* Thêm dòng chuyển đến trang đăng ký */}
+                <p className="register-link">
+                    Chưa có tài khoản?{' '}
+                    <span
+                        onClick={() => navigate('/register')}
+                        style={{ color: 'blue', cursor: 'pointer', textDecoration: 'underline' }}
+                    >
+                        Đăng ký
+                    </span>
+                </p>
             </div>
         </div>
     );

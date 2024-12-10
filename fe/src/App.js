@@ -68,7 +68,11 @@ function App() {
 
   return (
     <div className="App">
-      {!['/admin', '/products', '/createProduct', '/users', '/', '/orders'].includes(location.pathname) && <Navbar />}
+
+      
+
+      {!['/admin', '/products', '/createProduct', '/users', '/', , '/orders', '/register'].includes(location.pathname) && <Navbar />}
+
 
       <Routes>
 
@@ -99,7 +103,11 @@ function App() {
       </Routes>
 
       {/* Footer */}
-      {!['/admin', '/products', '/createProduct', '/users', '/', '/orders'].includes(location.pathname) && <Footer />}
+
+
+
+      {!['/admin', '/products', '/createProduct', '/users', '/', '/orders', '/register'].includes(location.pathname) && <Footer />}
+
 
     </div>
   );
