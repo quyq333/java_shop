@@ -13,21 +13,25 @@ function Cart({ cart, setCart }) {
     };
 
     const handleIncreaseQuantity = (productId) => {
-        setCart(cart.map(item =>
-            item.id === productId ? { ...item, quantity: item.quantity + 1 } : item
-        ));
+        setCart((prevCart) =>
+            prevCart.map(item =>
+                item.id === productId ? { ...item, quantity: item.quantity + 1 } : item
+            )
+        );
     };
 
     const handleDecreaseQuantity = (productId) => {
-        setCart(cart.map(item =>
-            item.id === productId && item.quantity > 1
-                ? { ...item, quantity: item.quantity - 1 }
-                : item
-        ));
+        setCart((prevCart) =>
+            prevCart.map(item =>
+                item.id === productId && item.quantity > 1
+                    ? { ...item, quantity: item.quantity - 1 }
+                    : item
+            )
+        );
     };
 
     const handleRemoveProduct = (productId) => {
-        setCart(cart.filter(item => item.id !== productId));
+        setCart((prevCart) => prevCart.filter(item => item.id !== productId));
     };
 
     const handleCheckout = () => {

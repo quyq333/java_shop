@@ -7,13 +7,16 @@ import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.List;
+import java.util.UUID;
+
 @Document(collection = "users")
 @Data
-@NoArgsConstructor
+
 @AllArgsConstructor
 public class User {
     @Id
-    private ObjectId id;
+    private String id;
     private String name;
     private String email;
     private String phoneNumber;
@@ -21,6 +24,24 @@ public class User {
     private String gender;
 
     private String password;
+
+    // Thêm giỏ hàng
+    private List<CartItem> cart;
+    // Constructor
+    public User() {
+        this.id = UUID.randomUUID().toString(); // Tạo ID tự động kiểu chuỗi
+    }
+    // Constructor khởi tạo ID tự động
+    public User(String name, String email, String phoneNumber, String address, String gender, String password, List<CartItem> cart) {
+        this.id = UUID.randomUUID().toString(); // Tạo ID tự động kiểu chuỗi
+        this.name = name;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+        this.gender = gender;
+        this.password = password;
+        this.cart = cart;
+    }
 
     public String getEmail() {
         return email;

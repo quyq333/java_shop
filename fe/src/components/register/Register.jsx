@@ -22,6 +22,7 @@ function Register() {
             phoneNumber,
             gender,
             address,
+            cart: [], // Khởi tạo gi�� hàng r��ng cho người dùng mới
         };
 
         try {
@@ -34,7 +35,7 @@ function Register() {
             });
 
             const data = await response.text();
-            
+
             if (response.status === 200 && data === "Email already exists!") {
                 // Nếu backend trả về lỗi email đã tồn tại
                 setMessage("Email đã tồn tại, vui lòng chọn email khác!");
@@ -52,7 +53,7 @@ function Register() {
             alert('Đăng ký thất bại. Vui lòng thử lại!');
             setMessage("Something went wrong!");
         }
-    
+
     };
 
     return (

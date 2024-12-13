@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios'; // Thư viện hỗ trợ gửi HTTP request
 import './Login.css'; // CSS tuỳ chỉnh
 
-function Login({ setIsAuthenticated }) {
+function Login({ setIsAuthenticated, setCart, getCart }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState(''); // Thông báo
@@ -19,23 +19,45 @@ function Login({ setIsAuthenticated }) {
                 password: password,
             });
 
-            // Nếu đăng nhập thành công
-            setMessage(response.data); // Hiển thị thông báo từ backend
-            alert('Đăng nhập thành công!');
-            setIsAuthenticated(true); // Đặt trạng thái đã xác thực (nếu cần)
+            // Kiểm tra phản hồi từ API
+            if (response.data && response.data.id) {
+                const userId = String(response.data.id); // Đảm bảo ID là chuỗi
+                const userName = response.data.name;
 
-            setTimeout(() => {
-                navigate('/home'); // Chuyển đến trang chính (Home)
-            }, 1500); // Thời gian chờ trước khi chuyển
+                // Lưu ID người dùng vào localStorage
+                localStorage.setItem("userId", userId);
+
+                // Hiển thị thông báo và chuyển hướng
+                setMessage(response.data.message || "Đăng nhập thành công!");
+                alert(`Đăng nhập thành công! Chào mừng, ${userName}`);
+
+
+
+
+                setTimeout(() => {
+                    navigate('/home');
+                }, 1000);
+
+                // Cập nhật trạng thái đăng nhập
+                setIsAuthenticated(true);
+                // Reset giỏ hàng cũ và lấy giỏ hàng mới cho người dùng mới
+                setCart([]);  // Xóa giỏ hàng hiện tại
+                getCart(userId);  // Lấy giỏ hàng mới
+
+
+            } else {
+                setMessage("Phản hồi không hợp lệ từ server!"); // Xử lý trường hợp phản hồi lỗi
+            }
         } catch (error) {
             // Xử lý lỗi
-            if (error.response) {
-                setMessage(error.response.data); // Hiển thị thông báo lỗi từ backend
+            if (error.response && error.response.data) {
+                setMessage(error.response.data.message || "Đăng nhập thất bại! Vui lòng kiểm tra thông tin.");
             } else {
-                setMessage("Something went wrong!"); // Lỗi khác (ví dụ: không kết nối được API)
+                setMessage("Lỗi kết nối! Vui lòng thử lại.");
             }
         }
     };
+
 
     return (
         <div className="login-container">
