@@ -24,6 +24,7 @@ public class User {
     private String gender;
 
     private String password;
+    private String role;
 
     // Thêm giỏ hàng
     private List<CartItem> cart;

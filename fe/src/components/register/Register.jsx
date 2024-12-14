@@ -22,6 +22,7 @@ function Register() {
             phoneNumber,
             gender,
             address,
+            role: 'user',
             cart: [], // Khởi tạo gi�� hàng r��ng cho người dùng mới
         };
 

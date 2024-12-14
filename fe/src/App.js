@@ -22,7 +22,7 @@ function App() {
   const location = useLocation();
   const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
-  const [isAuthenticated, setIsAuthenticated] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -58,6 +58,10 @@ function App() {
 
   useEffect(() => {
     const userId = localStorage.getItem("userId");
+    // const userRole = localStorage.getItem("userRole");
+    // if (userId && userRole) {
+    //   setIsAuthenticated[true] = true;
+    // }
     if (userId) {
       getCart(userId);
     }
@@ -102,12 +106,18 @@ function App() {
     return cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
   }, [cart]);
 
-  function ProtectedRoute({ children }) {
-    if (!isAuthenticated) {
+  function ProtectedRoute({ children, requiredRole }) {
+    const userRole = localStorage.getItem("userRole");
+    const userId = localStorage.getItem("userId");
+
+    if (!userId || userRole !== requiredRole) {
+      alert("Bạn không có quyền truy cập vào trang này.");
       return <Navigate to="/home" />;
     }
+
     return children;
   }
+
 
   return (
     <div className="App">
@@ -119,12 +129,15 @@ function App() {
         <Route path="/cart" element={<Cart cart={cart} setCart={setCart} />} />
         <Route path="/" element={<Login setIsAuthenticated={setIsAuthenticated} setCart={setCart} getCart={getCart} />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/admin" element={<ProtectedRoute><Admin /></ProtectedRoute>} />
-        <Route path="/products" element={<ProtectedRoute><ProductsAdmin /></ProtectedRoute>} />
-        <Route path="/createProduct" element={<ProtectedRoute><CreateProduct /></ProtectedRoute>} />
-        <Route path="/editProduct/:id" element={<EditProduct products={products} />} />
-        <Route path="/users" element={<ProtectedRoute><DashboardUsers /></ProtectedRoute>} />
-        <Route path="/orders" element={<ProtectedRoute><OrderManagement /></ProtectedRoute>} />
+        {/* Route yêu cầu userRole là "ADMIN" */}
+        <Route path="/admin" element={<ProtectedRoute requiredRole="ADMIN"><Admin /></ProtectedRoute>} />
+        <Route path="/products" element={<ProtectedRoute requiredRole="ADMIN"><ProductsAdmin /></ProtectedRoute>} />
+        <Route path="/createProduct" element={<ProtectedRoute requiredRole="ADMIN"><CreateProduct /></ProtectedRoute>} />
+        <Route path="/editProduct/:id" element={<ProtectedRoute requiredRole="ADMIN"><EditProduct products={products} /></ProtectedRoute>} />
+        <Route path="/users" element={<ProtectedRoute requiredRole="ADMIN"><DashboardUsers /></ProtectedRoute>} />
+        <Route path="/orders" element={<ProtectedRoute requiredRole="ADMIN"><OrderManagement /></ProtectedRoute>} />
+
+
         <Route path="/checkout" element={<Checkout cart={cart} total={total} />} />
         <Route path="/search" element={<Search products={products} addToCart={addToCart} />} />
       </Routes>

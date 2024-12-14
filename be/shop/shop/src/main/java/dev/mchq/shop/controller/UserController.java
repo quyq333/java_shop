@@ -45,7 +45,7 @@ public class UserController {
                 response.put("message", "Login successful");
                 response.put("id", authenticatedUser.getId()); // Lấy id thành chuỗi
                 response.put("name", authenticatedUser.getName()); // Tuỳ chọn: Trả thêm thông tin khác nếu cần
-
+                response.put("role", authenticatedUser.getRole()); // Thêm role vào phản hồi
                 return ResponseEntity.ok(response);
             } else {
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("User not found!");
