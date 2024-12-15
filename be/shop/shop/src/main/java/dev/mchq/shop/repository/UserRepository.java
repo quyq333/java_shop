@@ -9,10 +9,16 @@ import java.util.Optional;
 
 public interface UserRepository extends MongoRepository<User, String> {
 
+//    static Optional<Object> findById(ObjectId objectId) {
+//        return null;
+//    }
+
     boolean existsByEmail(String email);
     Optional<User> findByEmail(String email);
+
+
     
-    void deleteById(ObjectId id);  // Xóa người dùng theo ObjectId
+//    void deleteById(ObjectId id);  // Xóa người dùng theo ObjectId
     void deleteByEmail(String email);  // Xóa người dùng theo email
 
 

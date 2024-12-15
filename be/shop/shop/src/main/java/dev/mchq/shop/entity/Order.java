@@ -22,7 +22,7 @@ public class Order {
     private String address;
 
     private String paymentMethod;
-    private List<CartItem> cart;
+    private List<CartItems> cart;
     private double total;
 
     // Getters and Setters
@@ -76,11 +76,11 @@ public class Order {
         this.paymentMethod = paymentMethod;
     }
 
-    public List<CartItem> getCart() {
+    public List<CartItems> getCart() {
         return cart;
     }
 
-    public void setCart(List<CartItem> cart) {
+    public void setCart(List<CartItems> cart) {
         this.cart = cart;
     }
 
@@ -93,7 +93,7 @@ public class Order {
     }
 }
 
-class CartItem {
+class CartItems {
     private String title;
     private int quantity;
     private double price;

@@ -61,6 +61,12 @@ public class UserService {
         return userRepository.findByEmail(email);
     }
 
+
+    public User findByEmail(String email) {
+        // Sử dụng Optional để lấy User hoặc trả về null nếu không tìm thấy
+        return userRepository.findByEmail(email).orElse(null);
+    }
+
 }
 
 

@@ -1,38 +1,55 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios'; // Thư viện hỗ trợ gửi HTTP request
-import './Login.css'; // CSS tuỳ chỉnh
+import axios from 'axios';
+import './Login.css';
 
-function Login({ setIsAuthenticated }) {
+function Login({ setIsAuthenticated, setCart, getCart }) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [message, setMessage] = useState(''); // Thông báo
-    const navigate = useNavigate(); // Hook để chuyển trang
+    const [message, setMessage] = useState('');
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
-            // Gửi yêu cầu đăng nhập đến API
             const response = await axios.post("http://localhost:8080/api/v1/login", {
                 email: email,
                 password: password,
             });
+            console.log("Response from server:", response.data);
 
-            // Nếu đăng nhập thành công
-            setMessage(response.data); // Hiển thị thông báo từ backend
-            alert('Đăng nhập thành công!');
-            setIsAuthenticated(true); // Đặt trạng thái đã xác thực (nếu cần)
+            if (response.data && response.data.id) {
+                const userId = String(response.data.id);
+                const userRole = String(response.data.role); // Giả sử server trả về role của người dùng
+                const userName = response.data.name;
 
-            setTimeout(() => {
-                navigate('/home'); // Chuyển đến trang chính (Home)
-            }, 1500); // Thời gian chờ trước khi chuyển
-        } catch (error) {
-            // Xử lý lỗi
-            if (error.response) {
-                setMessage(error.response.data); // Hiển thị thông báo lỗi từ backend
+                // Lưu ID và role vào localStorage
+                localStorage.setItem("userId", userId);
+                localStorage.setItem("userRole", userRole); // Lưu role vào localStorage
+
+                console.log("User ID stored in localStorage:", localStorage.getItem("userId"));
+                console.log("User Role stored in localStorage:", localStorage.getItem("userRole"));
+
+                setIsAuthenticated(true); // Đảm bảo isAuthenticated được cập nhật
+
+                setMessage(response.data.message || "Đăng nhập thành công!");
+                alert(`Đăng nhập thành công! Chào mừng, ${userName}`);
+
+                setTimeout(() => {
+                    navigate('/home');
+                }, 1000);
+                // Reset giỏ hàng cũ và lấy giỏ hàng mới cho người dùng mới
+                setCart([]);  // Xóa giỏ hàng hiện tại
+                getCart(userId);  // Lấy giỏ hàng mới
             } else {
-                setMessage("Something went wrong!"); // Lỗi khác (ví dụ: không kết nối được API)
+                setMessage("Phản hồi không hợp lệ từ server!");
+            }
+        } catch (error) {
+            if (error.response && error.response.data) {
+                setMessage(error.response.data.message || "Đăng nhập thất bại! Vui lòng kiểm tra thông tin.");
+            } else {
+                setMessage("Lỗi kết nối! Vui lòng thử lại.");
             }
         }
     };
@@ -67,10 +84,8 @@ function Login({ setIsAuthenticated }) {
                     <button type="submit" className="btn btn-primary login-button">Đăng nhập</button>
                 </form>
 
-                {/* Hiển thị thông báo lỗi hoặc thành công */}
                 {message && <p className="login-message">{message}</p>}
 
-                {/* Thêm dòng chuyển đến trang đăng ký */}
                 <p className="register-link">
                     Chưa có tài khoản?{' '}
                     <span

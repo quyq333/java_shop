@@ -85,7 +85,7 @@ function DashboardUsers() {
             <tbody>
               {users.map((user, index) => (
                 <tr key={index}>
-                  <td>{user.id.timestamp}</td>
+                  <td>{user.id}</td>
                   <td>{user.name}</td>
                   <td>{user.email}</td>
                   <td>{user.phoneNumber}</td>
