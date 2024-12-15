@@ -71,7 +71,7 @@ function App() {
 
       
 
-      {!['/admin', '/products', '/createProduct', '/users', '/', , '/orders', '/register'].includes(location.pathname) && <Navbar />}
+      
 
 
       <Routes>
@@ -102,11 +102,6 @@ function App() {
         <Route path="/search" element={<Search products={products} addToCart={addToCart} />} />
       </Routes>
 
-      {/* Footer */}
-
-
-
-      {!['/admin', '/products', '/createProduct', '/users', '/', '/orders', '/register'].includes(location.pathname) && <Footer />}
 
 
     </div>

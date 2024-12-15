@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Cart.css'; // Thêm file CSS tùy chỉnh
+import Navbar from '../navbar/Navbar';
+import Footer from '../footer/Footer';
 
 function Cart({ cart, setCart }) {
     const navigate = useNavigate();
@@ -35,7 +37,9 @@ function Cart({ cart, setCart }) {
     };
 
     return (
-        <div className="cart-container">
+        <div className='wrapper'>
+            <Navbar/>
+            <div className="cart-container">
             <h1 className="cart-title">Giỏ hàng của bạn</h1>
             {cart.length === 0 ? (
                 <p className="cart-empty">Giỏ hàng của bạn hiện đang trống.</p>
@@ -86,6 +90,9 @@ function Cart({ cart, setCart }) {
                 </div>
             )}
         </div>
+        <Footer/>
+        </div>
+        
     );
 }
 

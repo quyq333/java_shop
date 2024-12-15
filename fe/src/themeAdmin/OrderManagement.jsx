@@ -96,7 +96,7 @@ function OrderManagement() {
                                             </div>
                                         ))}
                                     </td>
-                                    <td>{order.total}</td>
+                                    <td>{order.total} VND</td>
 
                                 </tr>
                             ))}

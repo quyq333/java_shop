@@ -1,15 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Home.css'; // Thêm CSS tùy chỉnh
+import Navbar from '../navbar/Navbar';
+import Footer from '../footer/Footer';
 
 function Home({ products, addToCart }) {
     return (
-        <div className="container">
-
-            
+        <div className='wrapper'>
+            <Navbar/>
+            <div className="container">
             <h1 className="welcome-title">Welcome to the Shop!</h1>
-
-            
             <div className="row">
                 {products.length === 0 ? (
                     <p className="loading-text">Loading products...</p>
@@ -35,6 +35,8 @@ function Home({ products, addToCart }) {
                     ))
                 )}
             </div>
+        </div>
+        <Footer/>
         </div>
     );
 }
