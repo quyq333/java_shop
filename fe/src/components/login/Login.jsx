@@ -28,8 +28,18 @@ function Login({ setIsAuthenticated, setCart, getCart }) {
                 localStorage.setItem("userId", userId);
                 localStorage.setItem("userRole", userRole); // Lưu role vào localStorage
 
+                // Lưu thông tin tài khoản vào localStorage khi đăng nhập thành công
+                localStorage.setItem("userName", response.data.name);
+                localStorage.setItem("userEmail", response.data.email);
+                localStorage.setItem("userPhone", response.data.phoneNumber);
+                localStorage.setItem("userAddress", response.data.address);
+                localStorage.setItem("userGender", response.data.gender);
+                localStorage.setItem("userPassword", response.data.password); // Chú ý mật khẩu chỉ nên lưu tạm thời và mã hóa nếu cần
+
+
                 console.log("User ID stored in localStorage:", localStorage.getItem("userId"));
-                console.log("User Role stored in localStorage:", localStorage.getItem("userRole"));
+                console.log("User Role stored in localStorage:", localStorage.getItem("userRole"))
+
 
                 setIsAuthenticated(true); // Đảm bảo isAuthenticated được cập nhật
 
@@ -38,6 +48,7 @@ function Login({ setIsAuthenticated, setCart, getCart }) {
 
                 setTimeout(() => {
                     navigate('/home');
+                    setIsAuthenticated(true);
                 }, 1000);
                 // Reset giỏ hàng cũ và lấy giỏ hàng mới cho người dùng mới
                 setCart([]);  // Xóa giỏ hàng hiện tại

@@ -44,7 +44,12 @@ public class UserController {
                 Map<String, Object> response = new HashMap<>();
                 response.put("message", "Login successful");
                 response.put("id", authenticatedUser.getId()); // Lấy id thành chuỗi
-                response.put("name", authenticatedUser.getName()); // Tuỳ chọn: Trả thêm thông tin khác nếu cần
+                response.put("name", authenticatedUser.getName());
+                response.put("email", authenticatedUser.getEmail());
+                response.put("phoneNumber", authenticatedUser.getPhoneNumber());
+                response.put("address", authenticatedUser.getAddress());
+                response.put("gender", authenticatedUser.getGender());
+                response.put("password", authenticatedUser.getPassword());  // Chú ý mật khẩu nên được mã hóa
                 response.put("role", authenticatedUser.getRole()); // Thêm role vào phản hồi
                 return ResponseEntity.ok(response);
             } else {
@@ -132,5 +137,31 @@ public class UserController {
         userRepository.save(user);
         return ResponseEntity.ok(user);
     }
+
+    @PutMapping("/{userId}/update")
+    public ResponseEntity<User> updateUser(@PathVariable String userId, @RequestBody User updatedUser) {
+        Optional<User> existingUserOptional = userRepository.findById(userId);
+
+        if (existingUserOptional.isPresent()) {
+            User existingUser = existingUserOptional.get();
+            existingUser.setName(updatedUser.getName());
+            existingUser.setEmail(updatedUser.getEmail());
+            existingUser.setPhoneNumber(updatedUser.getPhoneNumber());
+            existingUser.setAddress(updatedUser.getAddress());
+            existingUser.setGender(updatedUser.getGender());
+            existingUser.setPassword(updatedUser.getPassword());  // Mật khẩu có thể mã hóa trước khi lưu
+
+            userRepository.save(existingUser);  // Lưu thông tin người dùng đã cập nhật
+
+            return ResponseEntity.ok(existingUser);  // Trả về người dùng đã được cập nhật
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();  // Trả về 404 nếu không tìm thấy người dùng
+        }
+    }
+
+
+
+
+
 
 }

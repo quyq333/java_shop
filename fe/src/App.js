@@ -16,7 +16,10 @@ import DashboardUsers from './themeAdmin/DashboardUsers';
 import OrderManagement from './themeAdmin/OrderManagement';
 import Checkout from './components/checkout/Checkout';
 import Search from './components/search/Search';
+import AccountPage from './components/accountPage/AccountPage';
 import './App.css';
+import EditAccountPage from './components/editAccountPage/EditAccountPage';
+
 
 function App() {
   const location = useLocation();
@@ -121,14 +124,18 @@ function App() {
 
   return (
     <div className="App">
-      
-     
+
+
       <Routes>
         <Route path="/home" element={<Home products={products} addToCart={addToCart} />} />
         <Route path="/product/:id" element={<ProductDetail products={products} addToCart={addToCart} />} />
         <Route path="/cart" element={<Cart cart={cart} setCart={setCart} />} />
         <Route path="/" element={<Login setIsAuthenticated={setIsAuthenticated} setCart={setCart} getCart={getCart} />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/account" element={<AccountPage />} />
+        <Route path="/edit-account" element={<EditAccountPage />} />
+
+
         {/* Route yêu cầu userRole là "ADMIN" */}
         <Route path="/admin" element={<ProtectedRoute requiredRole="ADMIN"><Admin /></ProtectedRoute>} />
         <Route path="/products" element={<ProtectedRoute requiredRole="ADMIN"><ProductsAdmin /></ProtectedRoute>} />
@@ -142,8 +149,8 @@ function App() {
         <Route path="/search" element={<Search products={products} addToCart={addToCart} />} />
       </Routes>
 
-    
-      
+
+
     </div>
   );
 }

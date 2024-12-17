@@ -1,11 +1,14 @@
 /* Navbar chung */
 nav.navbar {
     background-color: #fff;
-    
+
     position: sticky;
-    top: 0; /* Dính vào đầu trang */
-    z-index: 1000; /* Đảm bảo navbar nằm trên các phần tử khác */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Thêm bóng để tạo sự nổi bật */
+    top: 0;
+    /* Dính vào đầu trang */
+    z-index: 1000;
+    /* Đảm bảo navbar nằm trên các phần tử khác */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Thêm bóng để tạo sự nổi bật */
 }
 
 .navbar .navbar-brand {
@@ -70,7 +73,8 @@ nav.navbar {
     cursor: pointer;
     transition: background 0.3s;
 }
-button.search-btn{
+
+button.search-btn {
     width: 10px;
     padding: 20px;
 }
@@ -96,4 +100,42 @@ button.search-btn{
     }
 }
 
+.user-dropdown {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
 
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    z-index: 1050;
+    display: none;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 0.25rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+.dropdown-item {
+    padding: 0.5rem 1rem;
+    color: #212529;
+    text-decoration: none;
+}
+
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+    color: #0056b3;
+}
+
+.dropdown-divider {
+    height: 1px;
+    margin: 0.5rem 0;
+    overflow: hidden;
+    background-color: #e9ecef;
+}

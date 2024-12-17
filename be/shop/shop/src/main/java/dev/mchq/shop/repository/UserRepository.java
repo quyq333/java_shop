@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public interface UserRepository extends MongoRepository<User, String> {
 
-//    static Optional<Object> findById(ObjectId objectId) {
+//    static Optional<String> findById(String objectId) {
 //        return null;
 //    }
 

@@ -1,14 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import './Navbar.css'; // CSS tùy chỉnh
+import './Navbar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch, faShoppingCart, faUserPlus, faSignOutAlt, faHome  } from '@fortawesome/free-solid-svg-icons';
-
-
+import { faSearch, faShoppingCart, faSignOutAlt, faHome, faUser } from '@fortawesome/free-solid-svg-icons';
+import axios from 'axios';
 
 function Navbar() {
     const [searchTerm, setSearchTerm] = useState('');
+    const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [userName, setUserName] = useState('');
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const userName = localStorage.getItem('userName'); // Lấy tên người dùng từ localStorage
+        if (userName) {
+            setUserName(userName); // Cập nhật state userName
+        }
+    }, []);
+
+
 
     const handleSearch = (e) => {
         e.preventDefault();
@@ -17,11 +27,21 @@ function Navbar() {
         }
     };
 
+    const toggleDropdown = () => {
+        setIsDropdownOpen(!isDropdownOpen);
+    };
+
+    const handleLogout = () => {
+        // Xóa thông tin người dùng trong localStorage
+        localStorage.removeItem('userId');
+        navigate('/');
+    };
+
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
             <div className="container-fluid">
                 {/* Logo */}
-                <Link className="navbar-brand text-primary font-weight-bold" to="/home" title='Trang chủ'>
+                <Link className="navbar-brand text-primary font-weight-bold" to="/home" title="Trang chủ">
                     <FontAwesomeIcon icon={faHome} />
                 </Link>
 
@@ -48,30 +68,35 @@ function Navbar() {
                             placeholder="Tìm kiếm sản phẩm..."
                             value={searchTerm}
                             onChange={(e) => setSearchTerm(e.target.value)}
-                            
                         />
                         <button className="btn search-btn" type="submit">
                             <FontAwesomeIcon icon={faSearch} />
-                            </button>
+                        </button>
                     </form>
 
                     {/* Navigation Links */}
                     <ul className="navbar-nav ms-auto">
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/register" title='Đăng kí'>
-                                <FontAwesomeIcon icon={faUserPlus} />
-                            </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/cart" title='Giỏ hàng'>
-                                <FontAwesomeIcon icon={faShoppingCart} />
 
-                            </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/" title='Đăng xuất'>
-                                <FontAwesomeIcon icon={faSignOutAlt} />
-                            </Link>
+                        {/* User Dropdown */}
+                        <li className="nav-item dropdown">
+                            <div className="nav-link user-dropdown" onClick={toggleDropdown} title="Tài khoản">
+                                <FontAwesomeIcon icon={faUser} />{' '}
+                                <span className="ms-1">{userName || 'Tài khoản'}</span>
+                            </div>
+                            {isDropdownOpen && (
+                                <div className="dropdown-menu dropdown-menu-end show">
+                                    <Link className="dropdown-item" to="/cart">Giỏ hàng</Link>
+                                    <Link className="dropdown-item" to="/orders">Đơn hàng</Link>
+                                    <Link className="dropdown-item" to="/account">Xem thông tin tài khoản</Link>
+                                    <div className="dropdown-divider"></div>
+                                    <button
+                                        className="dropdown-item text-danger"
+                                        onClick={handleLogout}
+                                    >
+                                        <FontAwesomeIcon icon={faSignOutAlt} /> Đăng xuất
+                                    </button>
+                                </div>
+                            )}
                         </li>
                     </ul>
                 </div>
