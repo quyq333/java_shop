@@ -121,8 +121,8 @@ function App() {
 
   return (
     <div className="App">
-      {/* {!['/admin', '/products', '/createProduct', '/users', '/', '/orders', '/register'].includes(location.pathname) && } */}
-      <Navbar />
+      
+     
       <Routes>
         <Route path="/home" element={<Home products={products} addToCart={addToCart} />} />
         <Route path="/product/:id" element={<ProductDetail products={products} addToCart={addToCart} />} />
@@ -142,8 +142,8 @@ function App() {
         <Route path="/search" element={<Search products={products} addToCart={addToCart} />} />
       </Routes>
 
-      {/* {!['/admin', '/products', '/createProduct', '/users', '/', '/orders', '/register'].includes(location.pathname) && } */}
-      <Footer />
+    
+      
     </div>
   );
 }

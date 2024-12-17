@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import './ProductDetail.css'; // Thêm CSS tùy chỉnh
+import Navbar from '../navbar/Navbar';
 
 function ProductDetail({ products, addToCart }) {
     const { id } = useParams();
@@ -69,7 +70,9 @@ function ProductDetail({ products, addToCart }) {
     };
 
     return (
-        <div className="product-detail-container">
+        <div className="wrapper">
+            <Navbar/>
+            <div className="product-detail-container">
             <div className="product-main">
                 <div className="product-image">
                     <img
@@ -133,6 +136,8 @@ function ProductDetail({ products, addToCart }) {
                 )) : <p>No additional images available.</p>}
             </div>
         </div>
+        </div>
+        
     );
 }
 
