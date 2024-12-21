@@ -9,11 +9,17 @@ import { Navigate, useNavigate } from 'react-router-dom';
 
 
 function Checkout({ cart = [], total }) {
+    const status = "Đang xử lý"
+    const userName = localStorage.getItem('userName');
+    const userEmail = localStorage.getItem('userEmail');
+    const userPhone = localStorage.getItem('userPhone');
+    const userAddress = localStorage.getItem('userAddress');
     const [formData, setFormData] = useState({
-        name: '',
-        phone: '',
-        email: '',
-        address: '',
+        name: userName,
+        phone: userPhone,
+        email: userEmail,
+        address: userAddress,
+
 
         paymentMethod: 'COD',
     });
@@ -31,16 +37,23 @@ function Checkout({ cart = [], total }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        const userId = localStorage.getItem('userId'); // Lấy userId từ localStorage
+        if (!userId) {
+            alert('Vui lòng đăng nhập để tiếp tục.');
+            return;
+        }
         try {
             const response = await axios.post('http://localhost:8080/api/v1/orders', {
                 ...formData,
                 cart,
                 total,
+                status,
+                userId
             });
             if (response.status === 200) {
                 alert('Đặt hàng thành công!');
-                navigate('/home'); 
-                
+                navigate('/ordersuser');
+
             }
         } catch (error) {
             console.error('Lỗi khi đặt hàng:', error);

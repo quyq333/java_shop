@@ -19,6 +19,7 @@ import Search from './components/search/Search';
 import AccountPage from './components/accountPage/AccountPage';
 import './App.css';
 import EditAccountPage from './components/editAccountPage/EditAccountPage';
+import UserOrders from './components/orderUser/OrderUser';
 
 
 function App() {
@@ -134,6 +135,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/account" element={<AccountPage />} />
         <Route path="/edit-account" element={<EditAccountPage />} />
+        <Route path="/ordersuser" element={<UserOrders />} />
 
 
         {/* Route yêu cầu userRole là "ADMIN" */}

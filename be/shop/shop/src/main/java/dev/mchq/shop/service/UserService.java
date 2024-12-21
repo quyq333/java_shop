@@ -1,12 +1,9 @@
 package dev.mchq.shop.service;
 
 
-import dev.mchq.shop.entity.Product;
-import dev.mchq.shop.repository.UserRepository;
 import dev.mchq.shop.entity.User;
-import org.bson.types.ObjectId;
+import dev.mchq.shop.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -65,6 +62,27 @@ public class UserService {
     public User findByEmail(String email) {
         // Sử dụng Optional để lấy User hoặc trả về null nếu không tìm thấy
         return userRepository.findByEmail(email).orElse(null);
+    }
+
+    // Cập nhật thông tin người dùng
+    public User updateUser(String userId, User updatedUser) {
+        Optional<User> existingUserOptional = userRepository.findById(userId);
+
+        if (existingUserOptional.isPresent()) {
+            User existingUser = existingUserOptional.get();
+            existingUser.setName(updatedUser.getName());
+            existingUser.setEmail(updatedUser.getEmail());
+            existingUser.setPhoneNumber(updatedUser.getPhoneNumber());
+            existingUser.setAddress(updatedUser.getAddress());
+            existingUser.setGender(updatedUser.getGender());
+
+            // Mã hóa mật khẩu trước khi lưu
+            existingUser.setPassword(updatedUser.getPassword());
+
+            return userRepository.save(existingUser);  // Lưu thông tin người dùng đã cập nhật
+        } else {
+            return null;  // Trả về null nếu không tìm thấy người dùng
+        }
     }
 
 

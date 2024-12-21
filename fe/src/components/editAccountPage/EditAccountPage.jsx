@@ -56,8 +56,8 @@ function EditAccountPage() {
         localStorage.setItem('userAddress', userInfo.address);
         localStorage.setItem('userGender', userInfo.gender);
         localStorage.setItem('userPassword', userInfo.password);
-        // Gửi yêu cầu PUT để cập nhật thông tin người dùng
-        // Gửi yêu cầu PUT để cập nhật thông tin người dùng
+        // // Gửi yêu cầu PUT để cập nhật thông tin người dùng
+        // // Gửi yêu cầu PUT để cập nhật thông tin người dùng
         // axios.put(`/api/v1/${userId}/update`, userInfo)
         //     .then((response) => {
         //         console.log("User updated successfully:", response.data);

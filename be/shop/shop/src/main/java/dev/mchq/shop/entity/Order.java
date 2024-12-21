@@ -16,10 +16,14 @@ import java.util.List;
 public class Order {
     @Id
     private String id;
+    private String userId; // Liên kết với tài khoản người dùng
+
     private String name;
     private String phone;
     private String email;
     private String address;
+
+    private String status;
 
     private String paymentMethod;
     private List<CartItems> cart;

@@ -86,7 +86,7 @@ function Navbar() {
                             {isDropdownOpen && (
                                 <div className="dropdown-menu dropdown-menu-end show">
                                     <Link className="dropdown-item" to="/cart">Giỏ hàng</Link>
-                                    <Link className="dropdown-item" to="/orders">Đơn hàng</Link>
+                                    <Link className="dropdown-item" to="/ordersuser">Đơn hàng</Link>
                                     <Link className="dropdown-item" to="/account">Xem thông tin tài khoản</Link>
                                     <div className="dropdown-divider"></div>
                                     <button

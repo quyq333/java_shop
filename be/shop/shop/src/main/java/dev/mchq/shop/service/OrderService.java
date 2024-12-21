@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class OrderService {
@@ -19,6 +20,19 @@ public class OrderService {
     public List<Order> getAllOrders() {
         return orderRepository.findAll();
     }
+    public List<Order> getOrdersByUserId(String userId) {
+        return orderRepository.findByUserId(userId);
+    }
 
+    // Cập nhật trạng thái đơn hàng thành "Hủy"
+    public Order cancelOrder(String orderId) {
+        Optional<Order> orderOpt = orderRepository.findById(orderId);
+        if (orderOpt.isPresent()) {
+            Order order = orderOpt.get();
+            order.setStatus("Hủy");  // Thay đổi trạng thái thành "Hủy"
+            return orderRepository.save(order);  // Lưu lại đơn hàng đã được cập nhật
+        }
+        return null;  // Nếu không tìm thấy đơn hàng
+    }
 }
 

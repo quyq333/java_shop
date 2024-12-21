@@ -70,6 +70,7 @@ function OrderManagement() {
                                 <th scope="col">SĐT</th>
                                 <th scope="col">Email</th>
                                 <th scope="col">Địa chỉ</th>
+                                <th scope="col">Trạng thái</th>
                                 <th scope="col">Phương thức thanh toán</th>
 
                                 <th scope="col">Chi tiết giỏ hàng</th>
@@ -86,6 +87,10 @@ function OrderManagement() {
                                     <td>{order.phone}</td>
                                     <td>{order.email}</td>
                                     <td>{order.address}</td>
+                                    <td style={{ backgroundColor: '', color: 'red' }}>
+                                        {order.status}
+                                    </td>
+
                                     <td>{order.paymentMethod}</td>
 
                                     <td>

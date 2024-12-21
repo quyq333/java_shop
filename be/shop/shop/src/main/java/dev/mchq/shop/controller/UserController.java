@@ -2,11 +2,9 @@ package dev.mchq.shop.controller;
 
 
 import dev.mchq.shop.entity.CartItem;
-import dev.mchq.shop.entity.Product;
+import dev.mchq.shop.entity.User;
 import dev.mchq.shop.repository.UserRepository;
 import dev.mchq.shop.service.UserService;
-import dev.mchq.shop.entity.User;
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -140,24 +138,15 @@ public class UserController {
 
     @PutMapping("/{userId}/update")
     public ResponseEntity<User> updateUser(@PathVariable String userId, @RequestBody User updatedUser) {
-        Optional<User> existingUserOptional = userRepository.findById(userId);
+        User updated = userService.updateUser(userId, updatedUser);
 
-        if (existingUserOptional.isPresent()) {
-            User existingUser = existingUserOptional.get();
-            existingUser.setName(updatedUser.getName());
-            existingUser.setEmail(updatedUser.getEmail());
-            existingUser.setPhoneNumber(updatedUser.getPhoneNumber());
-            existingUser.setAddress(updatedUser.getAddress());
-            existingUser.setGender(updatedUser.getGender());
-            existingUser.setPassword(updatedUser.getPassword());  // Mật khẩu có thể mã hóa trước khi lưu
-
-            userRepository.save(existingUser);  // Lưu thông tin người dùng đã cập nhật
-
-            return ResponseEntity.ok(existingUser);  // Trả về người dùng đã được cập nhật
+        if (updated != null) {
+            return ResponseEntity.ok(updated);  // Trả về người dùng đã được cập nhật
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();  // Trả về 404 nếu không tìm thấy người dùng
         }
     }
+
 
 
 
