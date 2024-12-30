@@ -163,3 +163,18 @@
 .card-price {
     font-family: 'Roboto', sans-serif;
 }
+button.btn-filter{
+    color: #fff;
+    margin-left: 10px;
+    background-color: #1943dc;
+
+}
+#typeProduct{
+    margin: 0px 10px;
+}
+.flex-self-column{
+    flex-direction: column;
+    display: flex;
+    align-items: baseline;
+    
+}

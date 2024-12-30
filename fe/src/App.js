@@ -147,7 +147,7 @@ function App() {
         <Route path="/orders" element={<ProtectedRoute requiredRole="ADMIN"><OrderManagement /></ProtectedRoute>} />
 
 
-        <Route path="/checkout" element={<Checkout cart={cart} total={total} />} />
+        <Route path="/checkout" element={<Checkout cart={cart} total={total} setCart={setCart}/>} />
         <Route path="/search" element={<Search products={products} addToCart={addToCart} />} />
       </Routes>
 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom'; // Thêm Link để chuyển hướng nếu cần
 import './OrderUser.css'; // Sử dụng CSS đã chỉnh sửa
+import Navbar from '../navbar/Navbar';
 
 function UserOrders() {
     const [orders, setOrders] = useState([]);
@@ -44,73 +45,78 @@ function UserOrders() {
     };
 
     return (
-        <div className="content-wrapper">
-            <div className="content-header">
-                <div className="container-fluid">
-                    <div className="row mb-2">
-                        <div className="col-sm-6">
-                            <h1 className="m-0">Đơn hàng</h1>
-                        </div>
+        <div>
+            <Navbar/>
+            <div className="content-wrapper">
+        
+        <div className="content-header">
+            <div className="container-fluid">
+                <div className="row mb-2">
+                    <div className="col-sm-6">
+                        <h1 className="m-0">Đơn hàng</h1>
                     </div>
                 </div>
             </div>
-
-            <table className="table table-striped table-hover">
-                <thead>
-                    <tr>
-                        {/* <th scope="col">ID</th> */}
-                        <th scope="col">Tên người nhận</th>
-                        <th scope="col">Số điện thoại</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Địa chỉ</th>
-                        <th scope="col">Trạng thái</th>
-                        <th scope="col">Tổng tiền</th>
-                        <th scope="col">Phương thức thanh toán</th>
-                        <th scope="col">Chi tiết giỏ hàng</th>
-                        <th scope="col">Hành động</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {orders.map((order) => (
-                        <tr key={order.id}>
-                            {/* <td>{order.id}</td> */}
-                            <td>{order.name}</td>
-                            <td>{order.phone}</td>
-                            <td>{order.email}</td>
-                            <td>{order.address}</td>
-                            <td style={{ backgroundColor: getStatusStyle(order.status), color: 'blue' }}>
-                                {order.status}
-                            </td>
-                            <td>{order.total.toLocaleString()} VND</td>
-                            <td>{order.paymentMethod}</td>
-                            <td>
-                                <ul>
-                                    {order.cart && order.cart.length > 0 ? (
-                                        order.cart.map((item, index) => (
-                                            <li key={index}>
-                                                <strong>{item.title}</strong> - Số lượng: {item.quantity}, Giá: {item.price.toLocaleString()} VND
-                                            </li>
-                                        ))
-                                    ) : (
-                                        <p>Giỏ hàng rỗng.</p>
-                                    )}
-                                </ul>
-                            </td>
-                            <td style={{ textAlign: 'center' }}>
-                                {order.status !== 'Hủy' && (
-                                    <button
-                                        className="btn btn-danger"
-                                        onClick={() => handleCancelOrder(order.id)}
-                                    >
-                                        Hủy đơn hàng
-                                    </button>
-                                )}
-                            </td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
         </div>
+
+        <table className="table table-striped table-hover">
+            <thead>
+                <tr>
+                    {/* <th scope="col">ID</th> */}
+                    <th scope="col">Tên người nhận</th>
+                    <th scope="col">Số điện thoại</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Địa chỉ</th>
+                    <th scope="col">Trạng thái</th>
+                    <th scope="col">Tổng tiền</th>
+                    <th scope="col">Phương thức thanh toán</th>
+                    <th scope="col">Chi tiết giỏ hàng</th>
+                    <th scope="col">Hành động</th>
+                </tr>
+            </thead>
+            <tbody>
+                {orders.map((order) => (
+                    <tr key={order.id}>
+                        {/* <td>{order.id}</td> */}
+                        <td>{order.name}</td>
+                        <td>{order.phone}</td>
+                        <td>{order.email}</td>
+                        <td>{order.address}</td>
+                        <td style={{ backgroundColor: getStatusStyle(order.status), color: 'blue' }}>
+                            {order.status}
+                        </td>
+                        <td>{order.total.toLocaleString()} VND</td>
+                        <td>{order.paymentMethod}</td>
+                        <td>
+                            <ul>
+                                {order.cart && order.cart.length > 0 ? (
+                                    order.cart.map((item, index) => (
+                                        <li key={index}>
+                                            <strong>{item.title}</strong> - Số lượng: {item.quantity}, Giá: {item.price.toLocaleString()} VND
+                                        </li>
+                                    ))
+                                ) : (
+                                    <p>Giỏ hàng rỗng.</p>
+                                )}
+                            </ul>
+                        </td>
+                        <td style={{ textAlign: 'center' }}>
+                            {order.status !== 'Hủy' && (
+                                <button
+                                    className="btn btn-danger"
+                                    onClick={() => handleCancelOrder(order.id)}
+                                >
+                                    Hủy đơn hàng
+                                </button>
+                            )}
+                        </td>
+                    </tr>
+                ))}
+            </tbody>
+        </table>
+    </div>
+        </div>
+        
     );
 }
 

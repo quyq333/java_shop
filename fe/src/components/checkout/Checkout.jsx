@@ -1,15 +1,10 @@
 import React, { useState } from 'react';
 import './Checkout.css'; // File CSS tùy chỉnh
 import axios from 'axios';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-
-
-
-
-
-function Checkout({ cart = [], total }) {
-    const status = "Đang xử lý"
+function Checkout({ cart, total, setCart }) {
+    const status = "Đang xử lý";
     const userName = localStorage.getItem('userName');
     const userEmail = localStorage.getItem('userEmail');
     const userPhone = localStorage.getItem('userPhone');
@@ -19,11 +14,9 @@ function Checkout({ cart = [], total }) {
         phone: userPhone,
         email: userEmail,
         address: userAddress,
-
-
         paymentMethod: 'COD',
     });
-    const navigate = useNavigate(); // Hook để chuyển trang
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -33,11 +26,9 @@ function Checkout({ cart = [], total }) {
         }));
     };
 
-
-
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const userId = localStorage.getItem('userId'); // Lấy userId từ localStorage
+        const userId = localStorage.getItem('userId');
         if (!userId) {
             alert('Vui lòng đăng nhập để tiếp tục.');
             return;
@@ -51,16 +42,18 @@ function Checkout({ cart = [], total }) {
                 userId
             });
             if (response.status === 200) {
-                alert('Đặt hàng thành công!');
-                navigate('/ordersuser');
+                // Xóa giỏ hàng khỏi localStorage
+                localStorage.removeItem('cart'); // Xóa giỏ hàng khỏi localStorage
+                setCart([]); // Xóa giỏ hàng trong state
 
+                alert('Đặt hàng thành công!');
+                navigate('/home'); // Điều hướng về trang chính sau khi đặt hàng thành công
             }
         } catch (error) {
             console.error('Lỗi khi đặt hàng:', error);
             alert('Đặt hàng thất bại!');
         }
     };
-
 
     return (
         <div className="checkout-container">
@@ -120,8 +113,6 @@ function Checkout({ cart = [], total }) {
                                 required
                             />
                         </div>
-
-
                     </div>
 
                     {/* Chọn phương thức thanh toán */}
@@ -147,9 +138,7 @@ function Checkout({ cart = [], total }) {
                             <ul>
                                 {cart.map((item, index) => (
                                     <li key={index}>
-                                        <li key={index}>
-                                            {item.title} x {item.quantity} - {(item.price * item.quantity).toLocaleString()} VND
-                                        </li>
+                                        {item.title} x {item.quantity} - {(item.price * item.quantity).toLocaleString()} VND
                                     </li>
                                 ))}
                             </ul>

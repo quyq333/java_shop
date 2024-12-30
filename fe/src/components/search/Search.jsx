@@ -1,6 +1,7 @@
 import React from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import './Search.css'; // Sử dụng CSS từ Home
+import Navbar from '../navbar/Navbar';
 
 function SearchResults({ products, addToCart }) {
     const location = useLocation();
@@ -12,7 +13,9 @@ function SearchResults({ products, addToCart }) {
     );
 
     return (
-        <div className="container mt-4">
+        <div>
+            <Navbar/>
+            <div className="container mt-4">
             <h2>Kết quả tìm kiếm cho: "{query}"</h2>
             {filteredProducts.length === 0 ? (
                 <p>Không tìm thấy sản phẩm nào.</p>
@@ -43,6 +46,7 @@ function SearchResults({ products, addToCart }) {
                     ))}
                 </div>
             )}
+        </div>
         </div>
     );
 }

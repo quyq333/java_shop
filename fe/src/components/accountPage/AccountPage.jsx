@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './AccountPage.css';
+import Navbar from '../navbar/Navbar';
 
 function AccountPage() {
     const [userInfo, setUserInfo] = useState({
@@ -44,7 +45,9 @@ function AccountPage() {
     };
 
     return (
-        <div className="account-page-container">
+        <div>
+            <Navbar/>
+            <div className="account-page-container">
             <h2 className="account-page-title">Thông tin tài khoản</h2>
             <div className="account-info">
                 <div className="account-info-item">
@@ -70,6 +73,7 @@ function AccountPage() {
                 </div>
             </div>
             <button className="edit-button" onClick={handleEdit}>Chỉnh sửa thông tin</button>
+        </div>
         </div>
     );
 }
